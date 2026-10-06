@@ -153,13 +153,22 @@
     }
 
     .quantity button {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border: 1px solid #d8c9c2;
-      background: transparent;
+      background: #fffaf7;
       color: #4a3832;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 17px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .quantity button:active {
+      transform: scale(0.95);
     }
 
     .quantity span {
@@ -249,7 +258,7 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     .summary {
@@ -306,6 +315,11 @@
       opacity: 0.88;
     }
 
+    .order-button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
     footer {
       text-align: center;
       padding: 70px 20px;
@@ -350,12 +364,18 @@
   </style>
 </head>
 
+
 <body>
 
   <header>
-    <div class="brand">Sweet Solace</div>
 
-    <h1>sweet solace; baked stories</h1>
+    <div class="brand">
+      Sweet Solace
+    </div>
+
+    <h1>
+      sweet solace; baked stories
+    </h1>
 
     <p class="tagline">
       little moments, freshly baked.
@@ -364,7 +384,11 @@
     <a href="#menu" class="button">
       VIEW COOKIES
     </a>
+
   </header>
+
+
+  <!-- MENU -->
 
   <section id="menu">
 
@@ -380,54 +404,126 @@
       70–75g · palm-sized · freshly baked
     </p>
 
+
     <div class="cookie-grid">
 
-      <div class="cookie-card">
-        <div class="cookie-number">01</div>
 
-        <h3>Cheesy Cream Drop</h3>
+      <!-- 01 -->
+
+      <div class="cookie-card">
+
+        <div class="cookie-number">
+          01
+        </div>
+
+        <h3>
+          Cheesy Cream Drop
+        </h3>
 
         <p class="cookie-description">
-          A soft, buttery cookie with a creamy cream cheese center — rich,
-          mellow, and just the right kind of indulgent.
+          A soft, buttery cookie with a creamy cream cheese center —
+          rich, mellow, and just the right kind of indulgent.
         </p>
 
         <div class="cookie-bottom">
-          <span class="price">₱45</span>
+
+          <span class="price">
+            ₱45
+          </span>
 
           <div class="quantity">
-            <button type="button" onclick="changeQty(0, -1)">−</button>
-            <span id="qty-0">0</span>
-            <button type="button" onclick="changeQty(0, 1)">+</button>
+
+            <button
+              type="button"
+              onclick="changeQty(0, -1)"
+              aria-label="Decrease Cheesy Cream Drop quantity"
+            >
+              −
+            </button>
+
+            <span id="qty-0">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQty(0, 1)"
+              aria-label="Increase Cheesy Cream Drop quantity"
+            >
+              +
+            </button>
+
           </div>
+
         </div>
+
       </div>
 
-      <div class="cookie-card">
-        <div class="cookie-number">02</div>
 
-        <h3>Double Choco Fudge</h3>
+      <!-- 02 -->
+
+      <div class="cookie-card">
+
+        <div class="cookie-number">
+          02
+        </div>
+
+        <h3>
+          Double Choco Fudge
+        </h3>
 
         <p class="cookie-description">
-          Deep cocoa goodness folded with chocolate chips and finished with
-          a soft marshmallow on top, inspired by the cozy, gooey goodness of s’mores.
+          Deep cocoa goodness folded with chocolate chips and finished
+          with a soft marshmallow on top, inspired by the cozy,
+          gooey goodness of s’mores.
         </p>
 
         <div class="cookie-bottom">
-          <span class="price">₱45</span>
+
+          <span class="price">
+            ₱45
+          </span>
 
           <div class="quantity">
-            <button type="button" onclick="changeQty(1, -1)">−</button>
-            <span id="qty-1">0</span>
-            <button type="button" onclick="changeQty(1, 1)">+</button>
+
+            <button
+              type="button"
+              onclick="changeQty(1, -1)"
+              aria-label="Decrease Double Choco Fudge quantity"
+            >
+              −
+            </button>
+
+            <span id="qty-1">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQty(1, 1)"
+              aria-label="Increase Double Choco Fudge quantity"
+            >
+              +
+            </button>
+
           </div>
+
         </div>
+
       </div>
 
-      <div class="cookie-card">
-        <div class="cookie-number">03</div>
 
-        <h3>White Matcha Fusion</h3>
+      <!-- 03 -->
+
+      <div class="cookie-card">
+
+        <div class="cookie-number">
+          03
+        </div>
+
+        <h3>
+          White Matcha Fusion
+        </h3>
 
         <p class="cookie-description">
           Earthy culinary-grade matcha meets creamy white chocolate chips
@@ -435,62 +531,157 @@
         </p>
 
         <div class="cookie-bottom">
-          <span class="price">₱45</span>
+
+          <span class="price">
+            ₱45
+          </span>
 
           <div class="quantity">
-            <button type="button" onclick="changeQty(2, -1)">−</button>
-            <span id="qty-2">0</span>
-            <button type="button" onclick="changeQty(2, 1)">+</button>
+
+            <button
+              type="button"
+              onclick="changeQty(2, -1)"
+              aria-label="Decrease White Matcha Fusion quantity"
+            >
+              −
+            </button>
+
+            <span id="qty-2">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQty(2, 1)"
+              aria-label="Increase White Matcha Fusion quantity"
+            >
+              +
+            </button>
+
           </div>
+
         </div>
+
       </div>
 
-      <div class="cookie-card">
-        <div class="cookie-number">04</div>
 
-        <h3>Biscoff Spread Delight</h3>
+      <!-- 04 -->
+
+      <div class="cookie-card">
+
+        <div class="cookie-number">
+          04
+        </div>
+
+        <h3>
+          Biscoff Spread Delight
+        </h3>
 
         <p class="cookie-description">
-          Warm, buttery cookie goodness with the unmistakable caramelized
-          sweetness of Biscoff spread — cozy, rich, and wonderfully addictive.
+          Warm, buttery cookie goodness with the unmistakable
+          caramelized sweetness of Biscoff spread — cozy, rich,
+          and wonderfully addictive.
         </p>
 
         <div class="cookie-bottom">
-          <span class="price">₱45</span>
+
+          <span class="price">
+            ₱45
+          </span>
 
           <div class="quantity">
-            <button type="button" onclick="changeQty(3, -1)">−</button>
-            <span id="qty-3">0</span>
-            <button type="button" onclick="changeQty(3, 1)">+</button>
+
+            <button
+              type="button"
+              onclick="changeQty(3, -1)"
+              aria-label="Decrease Biscoff Spread Delight quantity"
+            >
+              −
+            </button>
+
+            <span id="qty-3">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQty(3, 1)"
+              aria-label="Increase Biscoff Spread Delight quantity"
+            >
+              +
+            </button>
+
           </div>
+
         </div>
+
       </div>
 
-      <div class="cookie-card">
-        <div class="cookie-number">05</div>
 
-        <h3>Choco Walnut Blend</h3>
+      <!-- 05 -->
+
+      <div class="cookie-card">
+
+        <div class="cookie-number">
+          05
+        </div>
+
+        <h3>
+          Choco Walnut Blend
+        </h3>
 
         <p class="cookie-description">
-          Rich chocolate cookie dough studded with chocolate and crunchy walnuts,
-          bringing together deep cocoa richness and a satisfying nutty bite.
+          Rich chocolate cookie dough studded with chocolate and
+          crunchy walnuts, bringing together deep cocoa richness
+          and a satisfying nutty bite.
         </p>
 
         <div class="cookie-bottom">
-          <span class="price">₱45</span>
+
+          <span class="price">
+            ₱45
+          </span>
 
           <div class="quantity">
-            <button type="button" onclick="changeQty(4, -1)">−</button>
-            <span id="qty-4">0</span>
-            <button type="button" onclick="changeQty(4, 1)">+</button>
+
+            <button
+              type="button"
+              onclick="changeQty(4, -1)"
+              aria-label="Decrease Choco Walnut Blend quantity"
+            >
+              −
+            </button>
+
+            <span id="qty-4">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQty(4, 1)"
+              aria-label="Increase Choco Walnut Blend quantity"
+            >
+              +
+            </button>
+
           </div>
+
         </div>
+
       </div>
 
-      <div class="cookie-card">
-        <div class="cookie-number">06</div>
 
-        <h3>Red Velvet Crumble</h3>
+      <!-- 06 -->
+
+      <div class="cookie-card">
+
+        <div class="cookie-number">
+          06
+        </div>
+
+        <h3>
+          Red Velvet Crumble
+        </h3>
 
         <p class="cookie-description">
           A soft red velvet cookie with a creamy cream cheese center —
@@ -499,18 +690,45 @@
         </p>
 
         <div class="cookie-bottom">
-          <span class="price">₱45</span>
+
+          <span class="price">
+            ₱45
+          </span>
 
           <div class="quantity">
-            <button type="button" onclick="changeQty(5, -1)">−</button>
-            <span id="qty-5">0</span>
-            <button type="button" onclick="changeQty(5, 1)">+</button>
+
+            <button
+              type="button"
+              onclick="changeQty(5, -1)"
+              aria-label="Decrease Red Velvet Crumble quantity"
+            >
+              −
+            </button>
+
+            <span id="qty-5">
+              0
+            </span>
+
+            <button
+              type="button"
+              onclick="changeQty(5, 1)"
+              aria-label="Increase Red Velvet Crumble quantity"
+            >
+              +
+            </button>
+
           </div>
+
         </div>
+
       </div>
 
     </div>
+
   </section>
+
+
+  <!-- ORDER -->
 
   <section class="order-section">
 
@@ -524,36 +742,59 @@
         A little something for you.
       </h2>
 
-      <form id="orderForm" onsubmit="placeOrder(event)">
+
+      <form
+        id="orderForm"
+        onsubmit="placeOrder(event)"
+      >
 
         <div class="form-grid">
 
+
           <div class="form-group">
-            <label for="name">Full name</label>
+
+            <label for="name">
+              Full name
+            </label>
+
             <input
               type="text"
               id="name"
               required
             >
+
           </div>
 
+
           <div class="form-group">
-            <label for="facebook">Facebook name</label>
+
+            <label for="facebook">
+              Facebook name
+            </label>
+
             <input
               type="text"
               id="facebook"
               required
             >
+
           </div>
 
+
           <div class="form-group">
-            <label for="contact">Contact number</label>
+
+            <label for="contact">
+              Contact number
+            </label>
+
             <input
               type="tel"
               id="contact"
               required
             >
+
           </div>
+
 
           <div class="form-group">
 
@@ -564,6 +805,7 @@
             <div class="radio-group">
 
               <label class="radio-option">
+
                 <input
                   type="radio"
                   name="method"
@@ -571,22 +813,29 @@
                   checked
                   onchange="toggleAddress()"
                 >
+
                 Pickup
+
               </label>
 
+
               <label class="radio-option">
+
                 <input
                   type="radio"
                   name="method"
                   value="Delivery"
                   onchange="toggleAddress()"
                 >
+
                 Delivery
+
               </label>
 
             </div>
 
           </div>
+
 
           <div
             class="form-group full hidden"
@@ -605,6 +854,7 @@
 
           </div>
 
+
           <div class="form-group">
 
             <label for="preferredDate">
@@ -618,6 +868,7 @@
             >
 
           </div>
+
 
           <div class="form-group">
 
@@ -633,6 +884,7 @@
 
           </div>
 
+
           <div class="form-group">
 
             <label>
@@ -642,6 +894,7 @@
             <div class="radio-group">
 
               <label class="radio-option">
+
                 <input
                   type="radio"
                   name="payment"
@@ -649,35 +902,46 @@
                   checked
                   onchange="togglePayment()"
                 >
+
                 GCash
+
               </label>
 
+
               <label class="radio-option">
+
                 <input
                   type="radio"
                   name="payment"
                   value="Maya"
                   onchange="togglePayment()"
                 >
+
                 Maya
+
               </label>
 
+
               <label class="radio-option">
+
                 <input
                   type="radio"
                   name="payment"
                   value="Cash"
                   onchange="togglePayment()"
                 >
+
                 Cash
+
               </label>
 
             </div>
 
           </div>
 
+
           <div
-            class="form-group hidden"
+            class="form-group"
             id="paymentBox"
           >
 
@@ -692,6 +956,7 @@
             >
 
           </div>
+
 
           <div class="form-group full">
 
@@ -708,27 +973,53 @@
 
         </div>
 
+
+        <!-- SUMMARY -->
+
         <div class="summary">
 
           <div class="summary-title">
             Your order
           </div>
 
-          <div id="summaryItems"></div>
 
-          <div class="summary-divider"></div>
+          <div id="summaryItems">
+          </div>
+
+
+          <div class="summary-divider">
+          </div>
+
 
           <div class="summary-row">
-            <span>Delivery fee</span>
-            <span id="deliveryFee">₱0</span>
+
+            <span>
+              Delivery fee
+            </span>
+
+            <span id="deliveryFee">
+              ₱0
+            </span>
+
           </div>
 
-          <div class="summary-divider"></div>
+
+          <div class="summary-divider">
+          </div>
+
 
           <div class="total-row">
-            <span>Total</span>
-            <span id="total">₱0</span>
+
+            <span>
+              Total
+            </span>
+
+            <span id="total">
+              ₱0
+            </span>
+
           </div>
+
 
           <button
             type="submit"
@@ -744,6 +1035,9 @@
     </div>
 
   </section>
+
+
+  <!-- FOOTER -->
 
   <footer>
 
@@ -761,6 +1055,9 @@
 
   </footer>
 
+
+  <!-- JAVASCRIPT -->
+
   <script>
 
     const cookies = [
@@ -773,191 +1070,208 @@
     ];
 
     const price = 45;
+
     const deliveryPrice = 30;
+
 
     const GOOGLE_SHEETS_URL =
       "https://script.google.com/macros/s/AKfycbwVGnEdeEcyPuYu6rwzi7_wuKJERMg8R4YEiOBE4jB-RQ0OCxtoPbDcKoS6bVaGJqA2/exec";
 
-    let quantities = [0, 0, 0, 0, 0, 0];
+
+    let quantities = [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ];
+
 
     function changeQty(index, amount) {
 
-      quantities[index] += amount;
+      quantities[index] =
+        quantities[index] + amount;
+
 
       if (quantities[index] < 0) {
+
         quantities[index] = 0;
+
       }
+
 
       document.getElementById(
         "qty-" + index
-      ).textContent = quantities[index];
+      ).textContent =
+        quantities[index];
+
 
       updateSummary();
+
     }
+
 
     function updateSummary() {
 
       const summaryItems =
-        document.getElementById("summaryItems");
+        document.getElementById(
+          "summaryItems"
+        );
 
-      const deliveryFeeElement =
-        document.getElementById("deliveryFee");
+      let subtotal = 0;
 
-      const totalElement =
-        document.getElementById("total");
 
       summaryItems.innerHTML = "";
 
-      let subtotal = 0;
 
-      cookies.forEach((cookie, index) => {
+      cookies.forEach(
+        function(cookie, index) {
 
-        const qty = quantities[index];
+          const qty =
+quantities[index];
+      if (qty > 0) {
+        const itemTotal = qty * price;
+        subtotal += itemTotal;
 
-        if (qty > 0) {
-
-          const itemTotal =
-            qty * price;
-
-          subtotal += itemTotal;
-
-          const row =
-            document.createElement("div");
-
-          row.className = "summary-row";
-
-          row.innerHTML = `
-            <span>${cookie} × ${qty}</span>
-            <span>₱${itemTotal}</span>
-          `;
-
-          summaryItems.appendChild(row);
-        }
-
-      });
-
-      const deliveryMethod =
-        document.querySelector(
-          'input[name="method"]:checked'
-        ).value;
-
-      const deliveryFee =
-        deliveryMethod === "Delivery"
-          ? deliveryPrice
-          : 0;
-
-      const total =
-        subtotal + deliveryFee;
-
-      deliveryFeeElement.textContent =
-        `₱${deliveryFee}`;
-
-      totalElement.textContent =
-        `₱${total}`;
-    }
-
-    function toggleAddress() {
-
-      const delivery =
-        document.getElementById("delivery")?.checked;
-
-      const selectedMethod =
-        document.querySelector(
-          'input[name="method"]:checked'
-        ).value;
-
-      const addressBox =
-        document.getElementById("addressBox");
-
-      addressBox.classList.toggle(
-        "hidden",
-        selectedMethod !== "Delivery"
-      );
-
-      updateSummary();
-    }
-
-    function togglePayment() {
-
-      const selectedPayment =
-        document.querySelector(
-          'input[name="payment"]:checked'
-        ).value;
-
-      const paymentBox =
-        document.getElementById("paymentBox");
-
-      paymentBox.classList.toggle(
-        "hidden",
-        selectedPayment === "Cash"
-      );
-    }
-
-    function placeOrder(event) {
-
-      event.preventDefault();
-
-      const hasOrder =
-        quantities.some(
-          qty => qty > 0
-        );
-
-      if (!hasOrder) {
-
-        alert(
-          "Please choose at least one cookie before placing your order. 🍪"
-        );
-
-        return;
+        const row = document.createElement("div");
+        row.className = "summary-row";
+        row.innerHTML = `<span>${cookie} × ${qty}</span><span>₱${itemTotal}</span>`;
+        summaryItems.appendChild(row);
       }
+    });
+  }
 
-      const name =
-        document.getElementById("name").value;
+  const selectedMethod = document.querySelector('input[name="method"]:checked');
+  const deliveryFee = selectedMethod && selectedMethod.value === "Delivery" ? deliveryPrice : 0;
+  const total = subtotal + deliveryFee;
 
-      const facebookName =
-        document.getElementById("facebook").value;
+  document.getElementById("deliveryFee").textContent = "₱" + deliveryFee;
+  document.getElementById("total").textContent = "₱" + total;
+}
 
-      const contact =
-        document.getElementById("contact").value;
+function toggleAddress() {
+  const selectedMethod = document.querySelector('input[name="method"]:checked');
+  const addressBox = document.getElementById("addressBox");
 
-      const method =
-        document.querySelector(
-          'input[name="method"]:checked'
-        ).value;
+  if (selectedMethod && selectedMethod.value === "Delivery") {
+    addressBox.classList.remove("hidden");
+  } else {
+    addressBox.classList.add("hidden");
+  }
 
-      const address =
-        document.getElementById("address").value;
+  updateSummary();
+}
 
-      const preferredDate =
-        document.getElementById("preferredDate").value;
+function togglePayment() {
+  const selectedPayment = document.querySelector('input[name="payment"]:checked');
+  const paymentBox = document.getElementById("paymentBox");
 
-      const preferredTime =
-        document.getElementById("preferredTime").value;
+  if (selectedPayment && selectedPayment.value === "Cash") {
+    paymentBox.classList.add("hidden");
+  } else {
+    paymentBox.classList.remove("hidden");
+  }
+}
 
-      const paymentMethod =
-        document.querySelector(
-          'input[name="payment"]:checked'
-        ).value;
+async function placeOrder(event) {
+  event.preventDefault();
 
-      const paymentReference =
-        document.getElementById("paymentReference").value;
+  if (!quantities.some(qty => qty > 0)) {
+    alert("Please choose at least one cookie before placing your order. 🍪");
+    return;
+  }
 
-      const notes =
-        document.getElementById("notes").value;
+  const name = document.getElementById("name").value;
+  const facebookName = document.getElementById("facebook").value;
+  const contact = document.getElementById("contact").value;
+  const method = document.querySelector('input[name="method"]:checked').value;
+  const address = document.getElementById("address").value;
+  const preferredDate = document.getElementById("preferredDate").value;
+  const preferredTime = document.getElementById("preferredTime").value;
+  const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+  const paymentReference = document.getElementById("paymentReference").value;
+  const notes = document.getElementById("notes").value;
 
-      let subtotal = 0;
+  let subtotal = 0;
+  const orderItems = [];
 
-      let orderItems = [];
+  cookies.forEach((cookie, index) => {
+    const qty = quantities[index];
 
-      cookies.forEach((cookie, index) => {
+    if (qty > 0) {
+      subtotal += qty * price;
+      orderItems.push(`${cookie} × ${qty}`);
+    }
+  });
 
-        const qty = quantities[index];
+  const deliveryFee = method === "Delivery" ? deliveryPrice : 0;
+  const total = subtotal + deliveryFee;
 
-        if (qty > 0) {
+  const orderData = {
+    fullName: name,
+    facebookName: facebookName,
+    contact: contact,
+    order: orderItems.join(", "),
+    method: method,
+    address: address,
+    preferredDate: preferredDate,
+    preferredTime: preferredTime,
+    paymentMethod: paymentMethod,
+    paymentReference: paymentReference,
+    notes: notes,
+    subtotal: subtotal,
+    deliveryFee: deliveryFee,
+    total: total
+  };
 
-          const itemTotal =
-            qty * price;
+  const button = document.querySelector(".order-button");
+  button.disabled = true;
+  button.textContent = "SENDING ORDER...";
 
-          subtotal += itemTotal;
+  try {
+    await fetch(GOOGLE_SHEETS_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(orderData)
+    });
 
-          orderIt
+    alert(
+      `Thank you, ${name}! 🤎\n\nYour Sweet Solace order has been received.\n\nTotal: ₱${total}\n\nWe'll get in touch with you to confirm the details of your order.`
+    );
+
+    document.getElementById("orderForm").reset();
+    quantities = [0, 0, 0, 0, 0, 0];
+
+    quantities.forEach((qty, index) => {
+      document.getElementById("qty-" + index).textContent = qty;
+    });
+
+    toggleAddress();
+    togglePayment();
+    updateSummary();
+
+  } catch (error) {
+    alert("Something went wrong while sending your order. Please try again. 🤎");
+  }
+
+  button.disabled = false;
+  button.textContent = "PLACE MY ORDER";
+}
+
+document.getElementById("orderForm").addEventListener("submit", placeOrder);
+
+document.querySelectorAll('input[name="method"]').forEach(input => {
+  input.addEventListener("change", toggleAddress);
+});
+
+document.querySelectorAll('input[name="payment"]').forEach(input => {
+  input.addEventListener("change", togglePayment);
+});
+
+updateSummary();
+toggleAddress();
+togglePayment();
