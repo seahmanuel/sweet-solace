@@ -259,7 +259,7 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     .payment-note {
@@ -326,6 +326,77 @@
     .place-order:disabled {
       background: #a89a94;
       cursor: not-allowed;
+    }
+
+    /* SUCCESS CARD STYLES */
+    .success-card {
+      background: #fffdfc;
+      border: 1px solid #eadbd5;
+      border-radius: 24px;
+      padding: 45px 35px;
+      max-width: 650px;
+      margin-top: 35px;
+      text-align: center;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .success-tag {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a0847a;
+      margin-bottom: 12px;
+    }
+
+    .success-card h3 {
+      font-family: Georgia, serif;
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: normal;
+      color: #49352f;
+      margin-bottom: 18px;
+    }
+
+    .success-text {
+      color: #806a62;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .success-total-box {
+      display: inline-block;
+      background: #fffaf7;
+      border: 1px solid #eadbd5;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: #49352f;
+      margin-bottom: 30px;
+    }
+
+    .new-order-btn {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid #59433b;
+      color: #59433b;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-transform: uppercase;
+    }
+
+    .new-order-btn:hover {
+      background: #59433b;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     footer {
@@ -556,7 +627,7 @@
 
       <h2>A little something for you.</h2>
 
-      <form class="order-form" onsubmit="placeOrder(event)">
+      <form class="order-form" id="orderForm" onsubmit="placeOrder(event)">
 
         <!-- NAME -->
         <div class="field">
@@ -768,6 +839,22 @@
 
       </form>
 
+      <!-- SUCCESS CARD -->
+      <div class="success-card hidden" id="successCard">
+        <div class="success-tag">order received ♡</div>
+        <h3>Thank you for choosing Sweet Solace.</h3>
+        <p class="success-text">
+          Your order has been received and we're just baking up the next steps.<br>
+          We'll message you soon to confirm your order details.
+        </p>
+        <div class="success-total-box">
+          Total · <span id="successTotal">₱0</span>
+        </div>
+        <div>
+          <button class="new-order-btn" onclick="resetOrderForm()">Place another order</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -927,7 +1014,7 @@
 
       const submitBtn = document.getElementById("submitBtn");
       submitBtn.disabled = true;
-      submitBtn.textContent = "SENDING ORDER...";
+      submitBtn.textContent = "BAKING UP YOUR ORDER...";
 
       let orderedItemsList = [];
       let subtotal = 0;
@@ -975,18 +1062,13 @@
           body: JSON.stringify(orderData)
         });
 
-        alert(
-          `thank you for choosing sweet solace 🤎\n\nyour order has been received and we're baking up the next steps. we'll message you soon to confirm your order details.`
-        );
+        // Hide the form and show the elegant success card
+        document.getElementById("orderForm").classList.add("hidden");
+        document.getElementById("successTotal").textContent = `₱${total}`;
+        document.getElementById("successCard").classList.remove("hidden");
 
-        document.querySelector("form").reset();
-        quantities = [0, 0, 0, 0, 0, 0];
-        cookies.forEach((_, i) => {
-          document.getElementById(`qty-${i}`).textContent = "0";
-        });
-        toggleAddress();
-        togglePayment();
-        updateSummary();
+        // Scroll smoothly to success card
+        document.getElementById("successCard").scrollIntoView({ behavior: 'smooth' });
 
       } catch (error) {
         alert("Oops! Something went wrong while sending your order. Please try again.");
@@ -996,6 +1078,21 @@
         submitBtn.textContent = "PLACE MY ORDER";
       }
 
+    }
+
+    function resetOrderForm() {
+      document.querySelector("form").reset();
+      quantities = [0, 0, 0, 0, 0, 0];
+      cookies.forEach((_, i) => {
+        document.getElementById(`qty-${i}`).textContent = "0";
+      });
+      toggleAddress();
+      togglePayment();
+      updateSummary();
+
+      document.getElementById("successCard").classList.add("hidden");
+      document.getElementById("orderForm").classList.remove("hidden");
+      document.getElementById("orderForm").scrollIntoView({ behavior: 'smooth' });
     }
 
     updateSummary();
