@@ -13,50 +13,57 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
+      font-family: Arial, sans-serif;
       background: #fffaf7;
       color: #4a3832;
-      font-family: Arial, sans-serif;
       line-height: 1.6;
     }
 
     header {
+      min-height: 90vh;
       background: #f8eee9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 28px 20px 90px;
+      padding: 40px 20px;
     }
 
     .brand {
-      font-family: Georgia, serif;
-      font-size: 16px;
-      letter-spacing: 1.5px;
-      margin-bottom: 70px;
-      color: #59433b;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
     }
 
     h1 {
       font-family: Georgia, serif;
       font-size: clamp(42px, 9vw, 78px);
-      font-weight: normal;
+      line-height: 1.05;
       letter-spacing: -2px;
-      color: #49352f;
-      margin-bottom: 12px;
+      font-weight: 400;
+      max-width: 900px;
     }
 
     .tagline {
-      color: #8c7168;
+      margin-top: 25px;
       font-size: 15px;
-      letter-spacing: 0.5px;
-      margin-bottom: 32px;
+      color: #806b63;
     }
 
     .button {
       display: inline-block;
-      background: #59433b;
+      margin-top: 35px;
+      padding: 13px 24px;
+      background: #4a3832;
       color: white;
       text-decoration: none;
-      padding: 13px 25px;
-      border-radius: 30px;
       font-size: 12px;
       letter-spacing: 1.5px;
       transition: 0.2s ease;
@@ -67,85 +74,76 @@
     }
 
     section {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: auto;
-      padding: 85px 20px;
+      padding: 90px 22px;
     }
 
     .section-label {
       font-size: 11px;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: #a0847a;
+      color: #9a8177;
       margin-bottom: 12px;
     }
 
     h2 {
       font-family: Georgia, serif;
-      font-size: clamp(34px, 6vw, 52px);
-      font-weight: normal;
-      color: #49352f;
+      font-size: clamp(32px, 6vw, 50px);
+      font-weight: 400;
+      line-height: 1.1;
       margin-bottom: 12px;
     }
 
-    .menu-detail {
-      color: #9a8178;
+    .section-detail {
       font-size: 13px;
-      letter-spacing: 0.5px;
-      margin-bottom: 38px;
+      color: #8a756c;
+      margin-bottom: 45px;
     }
 
-    .cookies {
+    .cookie-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 22px;
     }
 
-    .cookie {
-      background: white;
-      border: 1px solid #eadbd5;
-      border-radius: 22px;
-      padding: 27px;
-      display: flex;
-      flex-direction: column;
-      min-height: 275px;
+    .cookie-card {
+      background: #fff;
+      border: 1px solid #eaded8;
+      padding: 28px;
     }
 
     .cookie-number {
       font-size: 11px;
-      color: #b2988e;
-      letter-spacing: 1px;
-      margin-bottom: 17px;
+      color: #aa9187;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
     }
 
-    .cookie h3 {
+    .cookie-card h3 {
       font-family: Georgia, serif;
       font-size: 24px;
-      font-weight: normal;
-      color: #49352f;
+      font-weight: 400;
       margin-bottom: 10px;
     }
 
     .cookie-description {
-      color: #806a62;
-      font-size: 14px;
-      line-height: 1.7;
+      font-size: 13px;
+      color: #78645d;
+      min-height: 68px;
       margin-bottom: 22px;
-      flex-grow: 1;
     }
 
     .cookie-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #f0e5e1;
-      padding-top: 17px;
+      border-top: 1px solid #eee3df;
+      padding-top: 18px;
     }
 
     .price {
-      font-family: Georgia, serif;
-      font-size: 18px;
-      color: #49352f;
+      font-size: 14px;
     }
 
     .quantity {
@@ -155,20 +153,19 @@
     }
 
     .quantity button {
-      width: 30px;
-      height: 30px;
-      border: 1px solid #ddcbc4;
-      background: #fffaf7;
-      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #d8c9c2;
+      background: transparent;
+      color: #4a3832;
       cursor: pointer;
-      color: #59433b;
       font-size: 16px;
     }
 
     .quantity span {
       min-width: 18px;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .order-section {
@@ -177,46 +174,51 @@
     }
 
     .order-inner {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: auto;
-      padding: 85px 20px;
     }
 
-    .order-form {
-      max-width: 720px;
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
       margin-top: 40px;
     }
 
-    .field {
-      margin-bottom: 24px;
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
     }
 
     label {
-      display: block;
-      font-size: 12px;
-      letter-spacing: 0.7px;
-      color: #725c54;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin-bottom: 8px;
+      color: #806b63;
     }
 
     input,
     textarea,
     select {
       width: 100%;
-      padding: 14px 15px;
-      border: 1px solid #decac2;
-      background: #fffdfc;
-      border-radius: 12px;
+      border: 1px solid #d9c9c1;
+      background: #fffaf7;
+      padding: 13px 14px;
       font-family: Arial, sans-serif;
-      font-size: 14px;
       color: #4a3832;
+      font-size: 13px;
       outline: none;
     }
 
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: #a98c82;
+      border-color: #8d746a;
     }
 
     textarea {
@@ -226,66 +228,47 @@
 
     .radio-group {
       display: flex;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 10px;
+      padding-top: 8px;
     }
 
     .radio-option {
-      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #4a3832;
+      cursor: pointer;
     }
 
     .radio-option input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .radio-option label {
-      margin: 0;
-      display: block;
-      padding: 11px 17px;
-      border: 1px solid #decac2;
-      background: #fffdfc;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 12px;
-      transition: 0.2s ease;
-    }
-
-    .radio-option input:checked + label {
-      background: #59433b;
-      border-color: #59433b;
-      color: white;
+      width: auto;
     }
 
     .hidden {
       display: none;
     }
 
-    .payment-note {
-      background: #fffaf7;
-      border: 1px solid #eadbd5;
-      border-radius: 15px;
-      padding: 15px;
-      margin-top: 12px;
-      color: #806a62;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
     .summary {
-      background: #fffdfc;
-      border: 1px solid #eadbd5;
-      border-radius: 18px;
-      padding: 23px;
-      margin: 35px 0 25px;
+      margin-top: 45px;
+      background: #fffaf7;
+      border: 1px solid #ded0ca;
+      padding: 25px;
     }
 
     .summary-title {
       font-family: Georgia, serif;
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: #49352f;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    #summaryItems {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .summary-row {
@@ -293,86 +276,75 @@
       justify-content: space-between;
       gap: 20px;
       font-size: 13px;
-      color: #806a62;
-      padding: 6px 0;
     }
 
-    .summary-row.total {
-      border-top: 1px solid #eadbd5;
-      margin-top: 10px;
-      padding-top: 14px;
-      color: #49352f;
+    .summary-divider {
+      border-top: 1px solid #ded0ca;
+      margin: 18px 0;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
       font-family: Georgia, serif;
-      font-size: 19px;
+      font-size: 20px;
     }
 
-    .place-order {
+    .order-button {
       width: 100%;
-      border: none;
-      cursor: pointer;
-      background: #59433b;
-      color: white;
+      margin-top: 25px;
       padding: 16px;
-      border-radius: 30px;
+      border: none;
+      background: #4a3832;
+      color: white;
       font-size: 12px;
-      letter-spacing: 1.5px;
-      transition: 0.2s ease;
+      letter-spacing: 2px;
+      cursor: pointer;
     }
 
-    .place-order:hover {
+    .order-button:hover {
       opacity: 0.88;
     }
 
     footer {
       text-align: center;
-      padding: 65px 20px;
-      background: #fffaf7;
-      color: #8c7168;
+      padding: 70px 20px;
+      background: #4a3832;
+      color: #fffaf7;
     }
 
-    footer .footer-title {
+    .footer-title {
       font-family: Georgia, serif;
-      font-size: 18px;
-      color: #59433b;
-      margin-bottom: 7px;
+      font-size: 24px;
+      margin-bottom: 8px;
     }
 
-    footer .footer-text {
+    .footer-text {
       font-size: 12px;
-      letter-spacing: 0.4px;
-      margin-bottom: 7px;
+      opacity: 0.7;
     }
 
-    footer .heart {
-      font-size: 17px;
-      color: #8c7168;
+    .heart {
+      margin-top: 25px;
+      font-size: 24px;
     }
 
     @media (max-width: 700px) {
-      header {
-        padding-bottom: 75px;
-      }
-
-      .brand {
-        margin-bottom: 60px;
-      }
-
-      section,
-      .order-inner {
-        padding-top: 65px;
-        padding-bottom: 65px;
-      }
-
-      .cookies {
+      .cookie-grid,
+      .form-grid {
         grid-template-columns: 1fr;
       }
 
-      .cookie {
-        min-height: 250px;
+      .form-group.full {
+        grid-column: auto;
       }
 
-      h1 {
-        line-height: 1.05;
+      section {
+        padding: 70px 18px;
+      }
+
+      .cookie-card {
+        padding: 23px;
       }
     }
   </style>
@@ -380,77 +352,79 @@
 
 <body>
 
-  <!-- HERO -->
   <header>
     <div class="brand">Sweet Solace</div>
 
     <h1>sweet solace; baked stories</h1>
 
-    <p class="tagline">little moments, freshly baked.</p>
+    <p class="tagline">
+      little moments, freshly baked.
+    </p>
 
-    <a href="#menu" class="button">VIEW COOKIES</a>
+    <a href="#menu" class="button">
+      VIEW COOKIES
+    </a>
   </header>
 
-  <!-- MENU -->
   <section id="menu">
 
-    <div class="section-label">our menu</div>
+    <div class="section-label">
+      our menu
+    </div>
 
-    <h2>Fresh from the oven.</h2>
+    <h2>
+      Fresh from the oven.
+    </h2>
 
-    <p class="menu-detail">
+    <p class="section-detail">
       70–75g · palm-sized · freshly baked
     </p>
 
-    <div class="cookies">
+    <div class="cookie-grid">
 
-      <!-- 1 -->
-      <div class="cookie">
+      <div class="cookie-card">
         <div class="cookie-number">01</div>
 
         <h3>Cheesy Cream Drop</h3>
 
         <p class="cookie-description">
-          A soft, buttery cookie with a creamy cream cheese center —
-          rich, mellow, and just the right kind of indulgent.
+          A soft, buttery cookie with a creamy cream cheese center — rich,
+          mellow, and just the right kind of indulgent.
         </p>
 
         <div class="cookie-bottom">
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(0, -1)">−</button>
+            <button type="button" onclick="changeQty(0, -1)">−</button>
             <span id="qty-0">0</span>
-            <button onclick="changeQty(0, 1)">+</button>
+            <button type="button" onclick="changeQty(0, 1)">+</button>
           </div>
         </div>
       </div>
 
-      <!-- 2 -->
-      <div class="cookie">
+      <div class="cookie-card">
         <div class="cookie-number">02</div>
 
         <h3>Double Choco Fudge</h3>
 
         <p class="cookie-description">
-          Deep cocoa goodness folded with chocolate chips and finished
-          with a soft marshmallow on top, inspired by the cozy,
-          gooey goodness of s’mores.
+          Deep cocoa goodness folded with chocolate chips and finished with
+          a soft marshmallow on top, inspired by the cozy, gooey goodness of s’mores.
         </p>
 
         <div class="cookie-bottom">
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(1, -1)">−</button>
+            <button type="button" onclick="changeQty(1, -1)">−</button>
             <span id="qty-1">0</span>
-            <button onclick="changeQty(1, 1)">+</button>
+            <button type="button" onclick="changeQty(1, 1)">+</button>
           </div>
         </div>
       </div>
 
-      <!-- 3 -->
-      <div class="cookie">
+      <div class="cookie-card">
         <div class="cookie-number">03</div>
 
         <h3>White Matcha Fusion</h3>
@@ -464,15 +438,14 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(2, -1)">−</button>
+            <button type="button" onclick="changeQty(2, -1)">−</button>
             <span id="qty-2">0</span>
-            <button onclick="changeQty(2, 1)">+</button>
+            <button type="button" onclick="changeQty(2, 1)">+</button>
           </div>
         </div>
       </div>
 
-      <!-- 4 -->
-      <div class="cookie">
+      <div class="cookie-card">
         <div class="cookie-number">04</div>
 
         <h3>Biscoff Spread Delight</h3>
@@ -486,38 +459,35 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(3, -1)">−</button>
+            <button type="button" onclick="changeQty(3, -1)">−</button>
             <span id="qty-3">0</span>
-            <button onclick="changeQty(3, 1)">+</button>
+            <button type="button" onclick="changeQty(3, 1)">+</button>
           </div>
         </div>
       </div>
 
-      <!-- 5 -->
-      <div class="cookie">
+      <div class="cookie-card">
         <div class="cookie-number">05</div>
 
         <h3>Choco Walnut Blend</h3>
 
         <p class="cookie-description">
-          Rich chocolate cookie dough studded with chocolate and crunchy
-          walnuts, bringing together deep cocoa richness and a satisfying
-          nutty bite.
+          Rich chocolate cookie dough studded with chocolate and crunchy walnuts,
+          bringing together deep cocoa richness and a satisfying nutty bite.
         </p>
 
         <div class="cookie-bottom">
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(4, -1)">−</button>
+            <button type="button" onclick="changeQty(4, -1)">−</button>
             <span id="qty-4">0</span>
-            <button onclick="changeQty(4, 1)">+</button>
+            <button type="button" onclick="changeQty(4, 1)">+</button>
           </div>
         </div>
       </div>
 
-      <!-- 6 -->
-      <div class="cookie">
+      <div class="cookie-card">
         <div class="cookie-number">06</div>
 
         <h3>Red Velvet Crumble</h3>
@@ -532,9 +502,9 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(5, -1)">−</button>
+            <button type="button" onclick="changeQty(5, -1)">−</button>
             <span id="qty-5">0</span>
-            <button onclick="changeQty(5, 1)">+</button>
+            <button type="button" onclick="changeQty(5, 1)">+</button>
           </div>
         </div>
       </div>
@@ -542,201 +512,202 @@
     </div>
   </section>
 
-  <!-- ORDER -->
-  <div class="order-section">
+  <section class="order-section">
 
     <div class="order-inner">
 
-      <div class="section-label">place your order</div>
+      <div class="section-label">
+        place your order
+      </div>
 
-      <h2>A little something for you.</h2>
+      <h2>
+        A little something for you.
+      </h2>
 
-      <form class="order-form" onsubmit="placeOrder(event)">
+      <form id="orderForm" onsubmit="placeOrder(event)">
 
-        <!-- NAME -->
-        <div class="field">
-          <label for="name">FULL NAME</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Your name"
-            required
-          >
-        </div>
+        <div class="form-grid">
 
-        <!-- FACEBOOK -->
-        <div class="field">
-          <label for="facebook">FACEBOOK NAME</label>
-          <input
-            type="text"
-            id="facebook"
-            placeholder="Your Facebook name"
-          >
-        </div>
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input
+              type="text"
+              id="name"
+              required
+            >
+          </div>
 
-        <!-- CONTACT -->
-        <div class="field">
-          <label for="contact">CONTACT NUMBER</label>
-          <input
-            type="tel"
-            id="contact"
-            placeholder="09XXXXXXXXX"
-            required
-          >
-        </div>
+          <div class="form-group">
+            <label for="facebook">Facebook name</label>
+            <input
+              type="text"
+              id="facebook"
+              required
+            >
+          </div>
 
-        <!-- PICKUP / DELIVERY -->
-        <div class="field">
+          <div class="form-group">
+            <label for="contact">Contact number</label>
+            <input
+              type="tel"
+              id="contact"
+              required
+            >
+          </div>
 
-          <label>HOW WOULD YOU LIKE TO RECEIVE YOUR ORDER?</label>
+          <div class="form-group">
 
-          <div class="radio-group">
+            <label>
+              Pickup / Delivery
+            </label>
 
-            <div class="radio-option">
-              <input
-                type="radio"
-                name="method"
-                id="pickup"
-                value="Pickup"
-                checked
-                onchange="toggleAddress()"
-              >
-              <label for="pickup">Pickup</label>
-            </div>
+            <div class="radio-group">
 
-            <div class="radio-option">
-              <input
-                type="radio"
-                name="method"
-                id="delivery"
-                value="Delivery"
-                onchange="toggleAddress()"
-              >
-              <label for="delivery">Delivery</label>
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="method"
+                  value="Pickup"
+                  checked
+                  onchange="toggleAddress()"
+                >
+                Pickup
+              </label>
+
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="method"
+                  value="Delivery"
+                  onchange="toggleAddress()"
+                >
+                Delivery
+              </label>
+
             </div>
 
           </div>
-        </div>
 
-        <!-- ADDRESS -->
-        <div class="field hidden" id="addressBox">
-
-          <label for="address">DELIVERY ADDRESS</label>
-
-          <textarea
-            id="address"
-            placeholder="Complete delivery address"
-          ></textarea>
-
-        </div>
-
-        <!-- DATE -->
-        <div class="field">
-
-          <label for="date">PREFERRED DATE</label>
-
-          <input
-            type="date"
-            id="date"
-            required
+          <div
+            class="form-group full hidden"
+            id="addressBox"
           >
 
-        </div>
+            <label for="address">
+              Delivery address
+            </label>
 
-        <!-- TIME -->
-        <div class="field">
+            <input
+              type="text"
+              id="address"
+              placeholder="Complete delivery address"
+            >
 
-          <label for="time">PREFERRED TIME</label>
+          </div>
 
-          <input
-            type="time"
-            id="time"
-            required
-          >
+          <div class="form-group">
 
-        </div>
+            <label for="preferredDate">
+              Preferred date
+            </label>
 
-        <!-- PAYMENT -->
-        <div class="field">
+            <input
+              type="date"
+              id="preferredDate"
+              required
+            >
 
-          <label>PAYMENT METHOD</label>
+          </div>
 
-          <div class="radio-group">
+          <div class="form-group">
 
-            <div class="radio-option">
-              <input
-                type="radio"
-                name="payment"
-                id="gcash"
-                value="GCash"
-                onchange="togglePayment()"
-                checked
-              >
-              <label for="gcash">GCash</label>
-            </div>
+            <label for="preferredTime">
+              Preferred time
+            </label>
 
-            <div class="radio-option">
-              <input
-                type="radio"
-                name="payment"
-                id="maya"
-                value="Maya"
-                onchange="togglePayment()"
-              >
-              <label for="maya">Maya</label>
-            </div>
+            <input
+              type="time"
+              id="preferredTime"
+              required
+            >
 
-            <div class="radio-option">
-              <input
-                type="radio"
-                name="payment"
-                id="cash"
-                value="Cash"
-                onchange="togglePayment()"
-              >
-              <label for="cash">Cash</label>
+          </div>
+
+          <div class="form-group">
+
+            <label>
+              Payment method
+            </label>
+
+            <div class="radio-group">
+
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="payment"
+                  value="GCash"
+                  checked
+                  onchange="togglePayment()"
+                >
+                GCash
+              </label>
+
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="payment"
+                  value="Maya"
+                  onchange="togglePayment()"
+                >
+                Maya
+              </label>
+
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  name="payment"
+                  value="Cash"
+                  onchange="togglePayment()"
+                >
+                Cash
+              </label>
+
             </div>
 
           </div>
-        </div>
 
-        <!-- PAYMENT REFERENCE -->
-        <div id="paymentBox">
-
-          <div class="field">
+          <div
+            class="form-group hidden"
+            id="paymentBox"
+          >
 
             <label for="paymentReference">
-              PAYMENT REFERENCE / LAST 4 DIGITS
+              Payment reference
             </label>
 
             <input
               type="text"
               id="paymentReference"
-              placeholder="e.g. 1234"
+              placeholder="Reference number"
             >
 
-            <div class="payment-note">
-              For GCash or Maya payments, please send your payment
-              confirmation/screenshot after placing your order.
-            </div>
+          </div>
+
+          <div class="form-group full">
+
+            <label for="notes">
+              Special notes
+            </label>
+
+            <textarea
+              id="notes"
+              placeholder="Anything you'd like us to know?"
+            ></textarea>
 
           </div>
 
         </div>
 
-        <!-- NOTES -->
-        <div class="field">
-
-          <label for="notes">SPECIAL NOTES</label>
-
-          <textarea
-            id="notes"
-            placeholder="Anything you'd like us to know?"
-          ></textarea>
-
-        </div>
-
-        <!-- SUMMARY -->
         <div class="summary">
 
           <div class="summary-title">
@@ -745,28 +716,35 @@
 
           <div id="summaryItems"></div>
 
+          <div class="summary-divider"></div>
+
           <div class="summary-row">
             <span>Delivery fee</span>
             <span id="deliveryFee">₱0</span>
           </div>
 
-          <div class="summary-row total">
+          <div class="summary-divider"></div>
+
+          <div class="total-row">
             <span>Total</span>
             <span id="total">₱0</span>
           </div>
 
-        </div>
+          <button
+            type="submit"
+            class="order-button"
+          >
+            PLACE MY ORDER
+          </button>
 
-        <button class="place-order" type="submit">
-          PLACE MY ORDER
-        </button>
+        </div>
 
       </form>
 
     </div>
-  </div>
 
-  <!-- FOOTER -->
+  </section>
+
   <footer>
 
     <div class="footer-title">
@@ -777,7 +755,9 @@
       where every bite tells a sweet story
     </div>
 
-    <div class="heart">♡</div>
+    <div class="heart">
+      ♡
+    </div>
 
   </footer>
 
@@ -795,6 +775,9 @@
     const price = 45;
     const deliveryPrice = 30;
 
+    const GOOGLE_SHEETS_URL =
+      "https://script.google.com/macros/s/AKfycbwVGnEdeEcyPuYu6rwzi7_wuKJERMg8R4YEiOBE4jB-RQ0OCxtoPbDcKoS6bVaGJqA2/exec";
+
     let quantities = [0, 0, 0, 0, 0, 0];
 
     function changeQty(index, amount) {
@@ -805,8 +788,9 @@
         quantities[index] = 0;
       }
 
-      document.getElementById("qty-" + index).textContent =
-        quantities[index];
+      document.getElementById(
+        "qty-" + index
+      ).textContent = quantities[index];
 
       updateSummary();
     }
@@ -832,7 +816,8 @@
 
         if (qty > 0) {
 
-          const itemTotal = qty * price;
+          const itemTotal =
+            qty * price;
 
           subtotal += itemTotal;
 
@@ -874,14 +859,19 @@
     function toggleAddress() {
 
       const delivery =
-        document.getElementById("delivery").checked;
+        document.getElementById("delivery")?.checked;
+
+      const selectedMethod =
+        document.querySelector(
+          'input[name="method"]:checked'
+        ).value;
 
       const addressBox =
         document.getElementById("addressBox");
 
       addressBox.classList.toggle(
         "hidden",
-        !delivery
+        selectedMethod !== "Delivery"
       );
 
       updateSummary();
@@ -889,15 +879,17 @@
 
     function togglePayment() {
 
-      const cash =
-        document.getElementById("cash").checked;
+      const selectedPayment =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        ).value;
 
       const paymentBox =
         document.getElementById("paymentBox");
 
       paymentBox.classList.toggle(
         "hidden",
-        cash
+        selectedPayment === "Cash"
       );
     }
 
@@ -906,7 +898,9 @@
       event.preventDefault();
 
       const hasOrder =
-        quantities.some(qty => qty > 0);
+        quantities.some(
+          qty => qty > 0
+        );
 
       if (!hasOrder) {
 
@@ -920,18 +914,50 @@
       const name =
         document.getElementById("name").value;
 
-      const total =
-        document.getElementById("total").textContent;
+      const facebookName =
+        document.getElementById("facebook").value;
 
-      alert(
-        `Thank you, ${name}! 🤎\n\nYour Sweet Solace order has been received.\n\nTotal: ${total}\n\nWe'll get in touch with you to confirm the details of your order.`
-      );
+      const contact =
+        document.getElementById("contact").value;
 
-    }
+      const method =
+        document.querySelector(
+          'input[name="method"]:checked'
+        ).value;
 
-    updateSummary();
+      const address =
+        document.getElementById("address").value;
 
-  </script>
+      const preferredDate =
+        document.getElementById("preferredDate").value;
 
-</body>
-</html>
+      const preferredTime =
+        document.getElementById("preferredTime").value;
+
+      const paymentMethod =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        ).value;
+
+      const paymentReference =
+        document.getElementById("paymentReference").value;
+
+      const notes =
+        document.getElementById("notes").value;
+
+      let subtotal = 0;
+
+      let orderItems = [];
+
+      cookies.forEach((cookie, index) => {
+
+        const qty = quantities[index];
+
+        if (qty > 0) {
+
+          const itemTotal =
+            qty * price;
+
+          subtotal += itemTotal;
+
+          orderIt
