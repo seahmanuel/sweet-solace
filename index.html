@@ -323,6 +323,11 @@
       opacity: 0.88;
     }
 
+    .place-order:disabled {
+      background: #a89a94;
+      cursor: not-allowed;
+    }
+
     footer {
       text-align: center;
       padding: 65px 20px;
@@ -757,7 +762,7 @@
 
         </div>
 
-        <button class="place-order" type="submit">
+        <button class="place-order" id="submitBtn" type="submit">
           PLACE MY ORDER
         </button>
 
@@ -782,6 +787,9 @@
   </footer>
 
   <script>
+
+    // REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+    const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
 
     const cookies = [
       "Cheesy Cream Drop",
@@ -901,7 +909,7 @@
       );
     }
 
-    function placeOrder(event) {
+    async function placeOrder(event) {
 
       event.preventDefault();
 
@@ -917,15 +925,74 @@
         return;
       }
 
-      const name =
-        document.getElementById("name").value;
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "SENDING ORDER...";
 
-      const total =
-        document.getElementById("total").textContent;
+      // Build Order Summary String & calculate totals
+      let orderedItemsList = [];
+      let subtotal = 0;
 
-      alert(
-        `Thank you, ${name}! 🤎\n\nYour Sweet Solace order has been received.\n\nTotal: ${total}\n\nWe'll get in touch with you to confirm the details of your order.`
-      );
+      cookies.forEach((cookie, index) => {
+        const qty = quantities[index];
+        if (qty > 0) {
+          orderedItemsList.push(`${cookie} x${qty}`);
+          subtotal += qty * price;
+        }
+      });
+
+      const method = document.querySelector('input[name="method"]:checked').value;
+      const deliveryFee = method === "Delivery" ? deliveryPrice : 0;
+      const total = subtotal + deliveryFee;
+
+      const orderData = {
+        name: document.getElementById("name").value,
+        facebook: document.getElementById("facebook").value,
+        contact: document.getElementById("contact").value,
+        method: method,
+        address: method === "Delivery" ? document.getElementById("address").value : "N/A (Pickup)",
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value,
+        payment: document.querySelector('input[name="payment"]:checked').value,
+        paymentReference: document.getElementById("paymentReference").value || "N/A",
+        notes: document.getElementById("notes").value || "N/A",
+        items: orderedItemsList.join(", "),
+        subtotal: `₱${subtotal}`,
+        deliveryFee: `₱${deliveryFee}`,
+        total: `₱${total}`
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(orderData)
+        });
+
+        alert(
+          `thank you for choosing sweet solace 🤎\n\nyour order has been received and we're baking up the next steps. we'll message you soon to confirm your order details.`
+        );
+
+        // Reset form after successful order
+        document.querySelector("form").reset();
+        quantities = [0, 0, 0, 0, 0, 0];
+        cookies.forEach((_, i) => {
+          document.getElementById(`qty-${i}`).textContent = "0";
+        });
+        toggleAddress();
+        togglePayment();
+        updateSummary();
+
+      } catch (error) {
+        alert("Oops! Something went wrong while sending your order. Please try again.");
+        console.error("Order submit error:", error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "PLACE MY ORDER";
+      }
 
     }
 
