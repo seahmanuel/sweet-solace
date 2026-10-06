@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Solace — Freshly Baked</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #fffaf7;
+      color: #4a3832;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: #f8eee9;
+    }
+
+    .brand {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      color: #92766c;
+    }
+
+    h1 {
+      font-size: clamp(48px, 12vw, 90px);
+      font-weight: normal;
+      letter-spacing: -2px;
+      color: #49352f;
+    }
+
+    .tagline {
+      font-size: 18px;
+      font-style: italic;
+      color: #8c7168;
+      margin: 15px 0 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 30px;
+      background: #59433b;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .section-label {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font: 12px Arial, sans-serif;
+      color: #a2877d;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 38px;
+      font-weight: normal;
+      margin-bottom: 45px;
+    }
+
+    .cookies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .cookie {
+      background: white;
+      padding: 28px;
+      border: 1px solid #eadbd5;
+      border-radius: 18px;
+    }
+
+    .cookie h3 {
+      font-size: 21px;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+
+    .cookie p {
+      font: 13px Arial, sans-serif;
+      color: #947d74;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font: 14px Arial, sans-serif;
+    }
+
+    .quantity button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #d9c6bf;
+      background: #fffaf7;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      color: #59433b;
+    }
+
+    .quantity span {
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .order-box {
+      background: #f8eee9;
+      border-radius: 24px;
+      padding: 35px 25px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font: 13px Arial, sans-serif;
+      margin-bottom: 8px;
+      color: #66504a;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #ddcbc4;
+      border-radius: 10px;
+      background: white;
+      font: 14px Arial, sans-serif;
+      color: #49352f;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .option {
+      background: white;
+      border: 1px solid #ddcbc4;
+      border-radius: 20px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font: 13px Arial, sans-serif;
+    }
+
+    .option input {
+      width: auto;
+      margin-right: 5px;
+    }
+
+    .summary {
+      background: white;
+      border-radius: 15px;
+      padding: 22px;
+      margin: 25px 0;
+    }
+
+    .summary h3 {
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font: 14px Arial, sans-serif;
+      margin: 8px 0;
+    }
+
+    .total {
+      border-top: 1px solid #eadbd5;
+      margin-top: 15px;
+      padding-top: 15px;
+      font-size: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .submit {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #a2877d;
+      font: 12px Arial, sans-serif;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 60px 18px;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+
+      .order-box {
+        padding: 25px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">Sweet Solace</div>
+
+  <h1>sweet solace.</h1>
+
+  <p class="tagline">
+    little moments, freshly baked.
+  </p>
+
+  <a href="#menu" class="button">VIEW COOKIES</a>
+</header>
+
+<section id="menu">
+
+  <div class="section-label">our menu</div>
+  <h2>Fresh from the oven.</h2>
+
+  <div class="cookies">
+
+    <div class="cookie">
+      <h3>Cheesy Cream Drop</h3>
+      <p>Soft, rich and creamy with a cheesy twist.</p>
+      <div class="price">₱45</div>
+      <div class="quantity">
+        <button onclick="changeQty(0,-1)">−</button>
+        <span id="qty0">0</span>
+        <button onclick="changeQty(0,1)">+</button>
+      </div>
+    </div>
+
+    <div class="cookie">
+      <h3>Double Choco Fudge</h3>
+      <p>Deep chocolate goodness in every bite.</p>
+      <div class="price">₱45</div>
+      <div class="quantity">
+        <button onclick="changeQty(1,-1)">−</button>
+        <span id="qty1">0</span>
+        <button onclick="changeQty(1,1)">+</button>
+      </div>
+    </div>
+
+    <div class="cookie">
+      <h3>White Matcha Fusion</h3>
+      <p>Sweet white chocolate blended with matcha.</p>
+      <div class="price">₱45</div>
+      <div class="quantity">
+        <button onclick="changeQty(2,-1)">−</button>
+        <span id="qty2">0</span>
+        <button onclick="changeQty(2,1)">+</button>
+      </div>
+    </div>
+
+    <div class="cookie">
+      <h3>Biscoff Spread Delight</h3>
+      <p>Buttery cookie goodness with Biscoff indulgence.</p>
+      <div class="price">₱45</div>
+      <div class="quantity">
+        <button onclick="changeQty(3,-1)">−</button>
+        <span id="qty3">0</span>
+        <button onclick="changeQty(3,1)">+</button>
+      </div>
+    </div>
+
+    <div class="cookie">
+      <h3>Choco Walnut Blend</h3>
+      <p>Chocolate and crunchy walnuts in perfect harmony.</p>
+      <div class="price">₱45</div>
+      <div class="quantity">
+        <button onclick="changeQty(4,-1)">−</button>
+        <span id="qty4">0</span>
+        <button onclick="changeQty(4,1)">+</button>
+      </div>
+    </div>
+
+    <div class="cookie">
+      <h3>Red Velvet Crumble</h3>
+      <p>Velvety cocoa with a sweet, delicate crumble.</p>
+      <div class="price">₱45</div>
+      <div class="quantity">
+        <button onclick="changeQty(5,-1)">−</button>
+        <span id="qty5">0</span>
+        <button onclick="changeQty(5,1)">+</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="order">
+
+  <div class="section-label">place your order</div>
+  <h2>Let's make it yours.</h2>
+
+  <div class="order-box">
+
+    <div class="form-group">
+      <label>Full name</label>
+      <input type="text" id="name" placeholder="Your name">
+    </div>
+
+    <div class="form-group">
+      <label>Facebook name</label>
+      <input type="text" id="facebook" placeholder="Your Facebook name">
+    </div>
+
+    <div class="form-group">
+      <label>Contact number</label>
+      <input type="tel" id="contact" placeholder="09XXXXXXXXX">
+    </div>
+
+    <div class="form-group">
+      <label>How would you like to receive your order?</label>
+
+      <div class="options">
+
+        <label class="option">
+          <input type="radio" name="method" value="Pickup"
+                 onchange="toggleAddress()"> Pickup
+        </label>
+
+        <label class="option">
+          <input type="radio" name="method" value="Delivery"
+                 onchange="toggleAddress()"> Delivery
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group hidden" id="addressBox">
+      <label>Delivery address</label>
+      <textarea id="address" placeholder="Complete delivery address"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Preferred date</label>
+      <input type="date" id="date">
+    </div>
+
+    <div class="form-group">
+      <label>Preferred time</label>
+      <input type="time" id="time">
+    </div>
+
+    <div class="form-group">
+      <label>Payment method</label>
+
+      <div class="options">
+
+        <label class="option">
+          <input type="radio" name="payment" value="GCash"
+                 onchange="togglePayment()"> GCash
+        </label>
+
+        <label class="option">
+          <input type="radio" name="payment" value="Maya"
+                 onchange="togglePayment()"> Maya
+        </label>
+
+        <label class="option">
+          <input type="radio" name="payment" value="Cash"
+                 onchange="togglePayment()"> Cash
+        </label>
+
+      </div>
+    </div>
+
+    <div id="paymentBox" class="hidden">
+
+      <div class="form-group">
+        <label>Payment reference number</label>
+        <input type="text" id="reference"
+               placeholder="Enter your reference number">
+      </div>
+
+      <div class="form-group">
+        <label>Payment note</label>
+        <textarea id="paymentNote"
+                  placeholder="Optional payment details"></textarea>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>Special notes</label>
+      <textarea id="notes"
+                placeholder="Any special requests?"></textarea>
+    </div>
+
+    <div class="summary">
+
+      <h3>Your order</h3>
+
+      <div id="summaryItems">
+        <p style="font:13px Arial;color:#947d74;">
+          No cookies selected yet.
+        </p>
+      </div>
+
+      <div class="total">
+        <span>Total</span>
+        <strong id="total">₱0</strong>
+      </div>
+
+    </div>
+
+    <button class="button submit" onclick="placeOrder()">
+      PLACE MY ORDER
+    </button>
+
+  </div>
+</section>
+
+<footer>
+  Sweet Solace · freshly baked with love ♡
+</footer>
+
+<script>
+
+  const cookies = [
+    "Cheesy Cream Drop",
+    "Double Choco Fudge",
+    "White Matcha Fusion",
+    "Biscoff Spread Delight",
+    "Choco Walnut Blend",
+    "Red Velvet Crumble"
+  ];
+
+  const price = 45;
+  const quantities = [0,0,0,0,0,0];
+
+  function changeQty(index, amount) {
+
+    quantities[index] += amount;
+
+    if (quantities[index] < 0) {
+      quantities[index] = 0;
+    }
+
+    document.getElementById("qty" + index).textContent =
+      quantities[index];
+
+    updateSummary();
+  }
+
+  function updateSummary() {
+
+    const summary = document.getElementById("summaryItems");
+    const totalElement = document.getElementById("total");
+
+    let total = 0;
+    let html = "";
+
+    for (let i = 0; i < cookies.length; i++) {
+
+      if (quantities[i] > 0) {
+
+        const itemTotal = quantities[i] * price;
+        total += itemTotal;
+
+        html += `
+          <div class="summary-row">
+            <span>${cookies[i]} × ${quantities[i]}</span>
+            <span>₱${itemTotal}</span>
+          </div>
+        `;
+      }
+    }
+
+    if (html === "") {
+
+      html = `
+        <p style="font:13px Arial;color:#947d74;">
+          No cookies selected yet.
+        </p>
+      `;
+    }
+
+    summary.innerHTML = html;
+    totalElement.textContent = "₱" + total;
+  }
+
+  function toggleAddress() {
+
+    const delivery =
+      document.querySelector('input[name="method"][value="Delivery"]');
+
+    document.getElementById("addressBox")
+      .classList.toggle("hidden", !delivery.checked);
+  }
+
+  function togglePayment() {
+
+    const cash =
+      document.querySelector('input[name="payment"][value="Cash"]');
+
+    document.getElementById("paymentBox")
+      .classList.toggle("hidden", cash.checked);
+  }
+
+  function placeOrder() {
+
+    let total = 0;
+    let order = [];
+
+    for (let i = 0; i < cookies.length; i++) {
+
+      if (quantities[i] > 0) {
+
+        const itemTotal = quantities[i] * price;
+
+        total += itemTotal;
+
+        order.push(
+          cookies[i] + " × " + quantities[i]
+        );
+      }
+    }
+
+    if (total === 0) {
+
+      alert("Please select at least one cookie.");
+      return;
+    }
+
+    const name =
+      document.getElementById("name").value.trim();
+
+    const contact =
+      document.getElementById("contact").value.trim();
+
+    if (!name || !contact) {
+
+      alert("Please enter your name and contact number.");
+      return;
+    }
+
+    alert(
+      "Thank you, " + name +
+      "! ♡\n\n" +
+      "Your Sweet Solace order has been received.\n\n" +
+      "Order total: ₱" + total +
+      "\n\nWe'll contact you shortly to confirm your order."
+    );
+
+  }
+
+</script>
+
+</body>
+</html>
