@@ -788,7 +788,7 @@
 
   <script>
 
-    // REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+    // Paste your Google Web App URL between the quotes below:
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVGnEdeEcyPuYu6rwzi7_wuKJERMg8R4YEiOBE4jB-RQ0OCxtoPbDcKoS6bVaGJqA2/exec";
 
     const cookies = [
@@ -929,7 +929,6 @@
       submitBtn.disabled = true;
       submitBtn.textContent = "SENDING ORDER...";
 
-      // Build Order Summary String & calculate totals
       let orderedItemsList = [];
       let subtotal = 0;
 
@@ -941,21 +940,25 @@
         }
       });
 
-      const method = document.querySelector('input[name="method"]:checked').value;
+      const methodElem = document.querySelector('input[name="method"]:checked');
+      const paymentElem = document.querySelector('input[name="payment"]:checked');
+
+      const method = methodElem ? methodElem.value : "Pickup";
+      const payment = paymentElem ? paymentElem.value : "GCash";
       const deliveryFee = method === "Delivery" ? deliveryPrice : 0;
       const total = subtotal + deliveryFee;
 
       const orderData = {
-        name: document.getElementById("name").value,
-        facebook: document.getElementById("facebook").value,
-        contact: document.getElementById("contact").value,
+        name: document.getElementById("name").value.trim(),
+        facebook: document.getElementById("facebook").value.trim() || "N/A",
+        contact: document.getElementById("contact").value.trim(),
         method: method,
-        address: method === "Delivery" ? document.getElementById("address").value : "N/A (Pickup)",
+        address: method === "Delivery" ? document.getElementById("address").value.trim() : "N/A (Pickup)",
         date: document.getElementById("date").value,
         time: document.getElementById("time").value,
-        payment: document.querySelector('input[name="payment"]:checked').value,
-        paymentReference: document.getElementById("paymentReference").value || "N/A",
-        notes: document.getElementById("notes").value || "N/A",
+        payment: payment,
+        paymentReference: document.getElementById("paymentReference").value.trim() || "N/A",
+        notes: document.getElementById("notes").value.trim() || "N/A",
         items: orderedItemsList.join(", "),
         subtotal: `₱${subtotal}`,
         deliveryFee: `₱${deliveryFee}`,
@@ -976,7 +979,6 @@
           `thank you for choosing sweet solace 🤎\n\nyour order has been received and we're baking up the next steps. we'll message you soon to confirm your order details.`
         );
 
-        // Reset form after successful order
         document.querySelector("form").reset();
         quantities = [0, 0, 0, 0, 0, 0];
         cookies.forEach((_, i) => {
