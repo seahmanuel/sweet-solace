@@ -23,22 +23,30 @@
     header {
       background: #f8eee9;
       text-align: center;
-      padding: 28px 20px 90px;
+      padding: 35px 20px 80px;
     }
 
-    .brand {
-      font-family: Georgia, serif;
-      font-size: 16px;
-      letter-spacing: 1.5px;
-      margin-bottom: 70px;
-      color: #59433b;
+    .brand-logo {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      margin: 0 auto 30px;
+      display: block;
+    }
+
+    .success-logo {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      margin: 0 auto 15px;
+      display: block;
     }
 
     h1 {
       font-family: Georgia, serif;
-      font-size: clamp(42px, 9vw, 78px);
+      font-size: clamp(40px, 8vw, 72px);
       font-weight: normal;
-      letter-spacing: -2px;
+      letter-spacing: -1.5px;
       color: #49352f;
       margin-bottom: 12px;
     }
@@ -426,11 +434,16 @@
 
     @media (max-width: 700px) {
       header {
-        padding-bottom: 75px;
+        padding-bottom: 65px;
       }
 
-      .brand {
-        margin-bottom: 60px;
+      .brand-logo {
+        max-width: 210px;
+        margin-bottom: 20px;
+      }
+
+      .success-logo {
+        max-width: 150px;
       }
 
       section,
@@ -458,7 +471,33 @@
 
   <!-- HERO -->
   <header>
-    <div class="brand">Sweet Solace</div>
+    <!-- OFFICIAL SVG LOGO -->
+    <div class="brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+        <!-- Background -->
+        <rect width="400" height="400" fill="#f8eee9"/>
+        
+        <!-- Main Oval Frame -->
+        <ellipse cx="200" cy="200" rx="172" ry="122" fill="#f8eee9" stroke="#59433b" stroke-width="2"/>
+        <ellipse cx="200" cy="200" rx="162" ry="112" fill="#fffdfc" stroke="#decac2" stroke-width="1.5"/>
+
+        <!-- Top Dainty Ribbon Badge -->
+        <path d="M 135 112 Q 200 122 265 112 L 255 92 Q 200 100 145 92 Z" fill="#59433b"/>
+        <text x="200" y="107" font-family="Arial, sans-serif" font-size="9" fill="#fffaf7" text-anchor="middle" letter-spacing="2.5" font-weight="bold">BAKED WITH LOVE</text>
+
+        <!-- Main Brand Title -->
+        <text x="200" y="175" font-family="Georgia, serif" font-size="33" font-weight="bold" fill="#49352f" text-anchor="middle">sweet solace;</text>
+        <text x="200" y="205" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#8c7168" text-anchor="middle">baked stories</text>
+
+        <!-- Divider Line & Sparkle Accents -->
+        <path d="M 120 222 L 122 227 L 127 229 L 122 231 L 120 236 L 118 231 L 113 229 L 118 227 Z" fill="#a0847a"/>
+        <line x1="135" y1="229" x2="265" y2="229" stroke="#decac2" stroke-width="1"/>
+        <path d="M 280 222 L 282 227 L 287 229 L 282 231 L 280 236 L 278 231 L 273 229 L 278 227 Z" fill="#a0847a"/>
+
+        <!-- Bottom Tagline -->
+        <text x="200" y="258" font-family="Georgia, serif" font-size="12.5" font-style="italic" fill="#59433b" text-anchor="middle" letter-spacing="0.5">where every bite tells a sweet story ♡</text>
+      </svg>
+    </div>
 
     <h1>sweet solace; baked stories</h1>
 
@@ -841,6 +880,23 @@
 
       <!-- SUCCESS CARD -->
       <div class="success-card hidden" id="successCard">
+        <!-- LOGO AT THE END OF ORDER -->
+        <div class="success-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+            <rect width="400" height="400" fill="#fffdfc"/>
+            <ellipse cx="200" cy="200" rx="172" ry="122" fill="#f8eee9" stroke="#59433b" stroke-width="2"/>
+            <ellipse cx="200" cy="200" rx="162" ry="112" fill="#fffdfc" stroke="#decac2" stroke-width="1.5"/>
+            <path d="M 135 112 Q 200 122 265 112 L 255 92 Q 200 100 145 92 Z" fill="#59433b"/>
+            <text x="200" y="107" font-family="Arial, sans-serif" font-size="9" fill="#fffaf7" text-anchor="middle" letter-spacing="2.5" font-weight="bold">BAKED WITH LOVE</text>
+            <text x="200" y="175" font-family="Georgia, serif" font-size="33" font-weight="bold" fill="#49352f" text-anchor="middle">sweet solace;</text>
+            <text x="200" y="205" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#8c7168" text-anchor="middle">baked stories</text>
+            <path d="M 120 222 L 122 227 L 127 229 L 122 231 L 120 236 L 118 231 L 113 229 L 118 227 Z" fill="#a0847a"/>
+            <line x1="135" y1="229" x2="265" y2="229" stroke="#decac2" stroke-width="1"/>
+            <path d="M 280 222 L 282 227 L 287 229 L 282 231 L 280 236 L 278 231 L 273 229 L 278 227 Z" fill="#a0847a"/>
+            <text x="200" y="258" font-family="Georgia, serif" font-size="12.5" font-style="italic" fill="#59433b" text-anchor="middle" letter-spacing="0.5">where every bite tells a sweet story ♡</text>
+          </svg>
+        </div>
+
         <div class="success-tag">order received ♡</div>
         <h3>Thank you for choosing Sweet Solace.</h3>
         <p class="success-text">
