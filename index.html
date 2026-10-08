@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sweet Solace — baked stories</title>
+  <title>sweet solace; baked stories</title>
+
+  <!-- SOCIAL MEDIA PREVIEW (OPEN GRAPH META TAGS) -->
+  <meta property="og:title" content="sweet solace; baked stories" />
+  <meta property="og:description" content="where every bite tells a sweet story." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seahmanuel.github.io/sweet-solace/" />
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: #fffaf7; color: #4a3832; font-family: Arial, sans-serif; line-height: 1.6; }
@@ -29,6 +36,25 @@
     .quantity button { width: 32px; height: 32px; border: 1px solid #ddcbc4; background: #fffaf7; border-radius: 50%; cursor: pointer; color: #59433b; font-size: 16px; display: flex; align-items: center; justify-content: center; user-select: none; -webkit-tap-highlight-color: transparent; }
     .quantity button:active { background: #f8eee9; }
     .quantity span { min-width: 18px; text-align: center; font-size: 14px; }
+    
+    /* REVIEWS SECTION STYLES */
+    .reviews-section { background: #f8eee9; border-top: 1px solid #eadbd5; border-bottom: 1px solid #eadbd5; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+    .review-card { background: white; border: 1px solid #eadbd5; border-radius: 18px; padding: 22px; font-size: 13.5px; color: #806a62; display: flex; flex-direction: column; justify-content: space-between; }
+    .review-stars { color: #d4a373; margin-bottom: 10px; font-size: 14px; }
+    .review-text { font-style: italic; line-height: 1.6; margin-bottom: 15px; }
+    .review-author { font-family: Georgia, serif; font-size: 13px; color: #49352f; font-weight: bold; }
+
+    /* FAQ SECTION STYLES */
+    .faq-section { background: #fffaf7; }
+    .faq-container { max-width: 800px; margin: auto; }
+    .faq-item { background: white; border: 1px solid #eadbd5; border-radius: 16px; margin-bottom: 14px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; padding: 20px 24px; background: none; border: none; font-family: Georgia, serif; font-size: 17px; color: #49352f; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: "＋"; font-size: 16px; color: #a0847a; transition: transform 0.2s ease; }
+    .faq-question.active::after { content: "−"; }
+    .faq-answer { padding: 0 24px 22px; color: #806a62; font-size: 14px; line-height: 1.7; display: none; border-top: 1px solid #f8eee9; padding-top: 16px; }
+    .faq-answer ul { margin-left: 20px; margin-top: 8px; }
+    
     .order-section { background: #f8eee9; max-width: none; }
     .order-inner { max-width: 1050px; margin: auto; padding: 85px 20px; }
     .order-form { max-width: 720px; margin-top: 40px; }
@@ -64,7 +90,7 @@
     footer .footer-title { font-family: Georgia, serif; font-size: 18px; color: #59433b; margin-bottom: 7px; }
     footer .footer-text { font-size: 12px; letter-spacing: 0.4px; margin-bottom: 7px; }
     footer .heart { font-size: 17px; color: #8c7168; }
-    @media (max-width: 700px) { header { padding-bottom: 65px; } .brand-logo { max-width: 210px; margin-bottom: 20px; } .success-logo { max-width: 150px; } section, .order-inner { padding-top: 65px; padding-bottom: 65px; } .cookies { grid-template-columns: 1fr; } .cookie { min-height: 250px; } h1 { line-height: 1.05; } }
+    @media (max-width: 700px) { header { padding-bottom: 65px; } .brand-logo { max-width: 210px; margin-bottom: 20px; } .success-logo { max-width: 150px; } section, .order-inner { padding-top: 65px; padding-bottom: 65px; } .cookies, .reviews-grid { grid-template-columns: 1fr; } .cookie { min-height: 250px; } h1 { line-height: 1.05; } }
   </style>
 </head>
 <body>
@@ -87,7 +113,7 @@
       </svg>
     </div>
     <h1>sweet solace; baked stories</h1>
-    <p class="tagline">little moments, freshly baked.</p>
+    <p class="tagline">where every bite tells a sweet story.</p>
     <a href="#menu" class="button">VIEW COOKIES</a>
   </header>
 
@@ -176,6 +202,91 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS SECTION -->
+  <section class="reviews-section">
+    <div style="max-width: 1050px; margin: auto;">
+      <div class="section-label">sweet words</div>
+      <h2>Loved by cookie lovers.</h2>
+      <p class="menu-detail">Here is what our community has to say ♡</p>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"Super rich and soft! The cream cheese center of the Cheesy Cream Drop is unmatched. Best paired with warm coffee!"</div>
+          </div>
+          <div class="review-author">— Happy Customer</div>
+        </div>
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"Ordered for my friend’s birthday and shipped via J&T to Laguna. Arrived fresh, intact, and incredibly delicious!"</div>
+          </div>
+          <div class="review-author">— Repeat Buyer</div>
+        </div>
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"The Biscoff Spread Delight is my absolute favorite. Not overly sweet, just perfect buttery goodness."</div>
+          </div>
+          <div class="review-author">— Local Foodie</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <div class="section-label">cookie care & info</div>
+      <h2>Frequently Asked Questions</h2>
+      <p class="menu-detail">Everything you need to know about your order ♡</p>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">How long do the cookies stay fresh?</button>
+        <div class="faq-answer">
+          Our cookies stay fresh and soft for <strong>up to 1 week</strong> at room temperature. For flavors with cream cheese (<em>Cheesy Cream Drop</em> &amp; <em>Red Velvet Crumble</em>), they are best enjoyed within <strong>5 days</strong>.<br><br>
+          If stored in an airtight container inside the fridge, they can last for <strong>up to 10 days</strong>.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">How do I reheat my cookies?</button>
+        <div class="faq-answer">
+          Pop your cookies in the microwave for <strong>15 to 20 seconds</strong>! This warms up the center, melts the chocolate chips, and brings back that cozy, fresh-from-the-oven goodness. ♡
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">How long does Luzon shipping take via J&T Express?</button>
+        <div class="faq-answer">
+          Delivery usually takes <strong>1 to 3 days</strong> after we drop off your parcel at J&T. We will send your tracking number as soon as your package is scanned by the courier.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">Do you accept rush orders?</button>
+        <div class="faq-answer">
+          We <strong>do not accept rush orders</strong>. Every batch is freshly baked and prepared with careful detail to ensure you receive the highest quality cookies! ✨
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">Are there any allergens I should know about?</button>
+        <div class="faq-answer">
+          Our cookies contain dairy and gluten. Specific ingredients per flavor include:
+          <ul>
+            <li><strong>Cream Cheese:</strong> <em>Cheesy Cream Drop</em> &amp; <em>Red Velvet Crumble</em></li>
+            <li><strong>Tree Nuts (Walnuts):</strong> <em>Choco Walnut Blend</em></li>
+          </ul>
+          <br>
+          <em>Note: All cookies are individually sealed in plastic packaging for freshness, hygiene, and safe transport.</em>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -288,10 +399,16 @@
           </div>
         </div>
 
+        <!-- GIFT NOTE OPTION -->
+        <div class="field" style="margin-top: 15px;">
+          <label for="giftNote">PERSONALIZED GIFT NOTE (OPTIONAL)</label>
+          <textarea id="giftNote" placeholder="Sending this as a gift? Type your message here and we'll write it on a card for free! ♡"></textarea>
+        </div>
+
         <!-- NOTES -->
         <div class="field">
           <label for="notes">SPECIAL NOTES</label>
-          <textarea id="notes" placeholder="Anything you'd like us to know?"></textarea>
+          <textarea id="notes" placeholder="Anything else you'd like us to know?"></textarea>
         </div>
 
         <!-- SUMMARY -->
@@ -368,6 +485,16 @@
     const price = 45;
     let quantities = [0, 0, 0, 0, 0, 0];
 
+    function toggleFaq(button) {
+      button.classList.toggle("active");
+      const answer = button.nextElementSibling;
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+      } else {
+        answer.style.display = "block";
+      }
+    }
+
     function onLocationChange() {
       const isLuzon = document.getElementById("locLuzon").checked;
 
@@ -378,7 +505,6 @@
       const addressLabel = document.getElementById("addressLabel");
 
       if (isLuzon) {
-        // Shipping to Luzon wide
         methodField.classList.add("hidden");
         cashOption.classList.add("hidden");
         timeField.classList.add("hidden");
@@ -386,18 +512,15 @@
         dateLabel.textContent = "PREFERRED DROP-OFF DATE TO J&T (4-day advance notice)";
         addressLabel.textContent = "FULL SHIPPING ADDRESS (Luzon)";
 
-        // Force GCash if Cash was previously selected
         if (document.getElementById("cash").checked) {
           document.getElementById("gcash").checked = true;
           togglePayment();
         }
 
-        // Show address input
         document.getElementById("addressBox").classList.remove("hidden");
         document.getElementById("address").required = true;
 
       } else {
-        // Calapan Local
         methodField.classList.remove("hidden");
         cashOption.classList.remove("hidden");
         timeField.classList.remove("hidden");
@@ -574,6 +697,13 @@
       const payment = paymentElem ? paymentElem.value : "GCash";
       const total = subtotal + deliveryFee;
 
+      const giftNoteVal = document.getElementById("giftNote").value.trim();
+      const notesVal = document.getElementById("notes").value.trim();
+      let combinedNotes = notesVal || "N/A";
+      if (giftNoteVal) {
+        combinedNotes = `[GIFT NOTE: ${giftNoteVal}] ` + (notesVal ? ` | Notes: ${notesVal}` : "");
+      }
+
       const orderData = {
         locationGroup: isLuzon ? "Luzon-Wide" : "Calapan City",
         name: document.getElementById("name").value.trim(),
@@ -585,7 +715,7 @@
         time: isLuzon ? "N/A (J&T Drop-off)" : (document.getElementById("time").value || "N/A"),
         payment: payment,
         paymentReference: document.getElementById("paymentReference").value.trim() || "N/A",
-        notes: document.getElementById("notes").value.trim() || "N/A",
+        notes: combinedNotes,
         items: orderedItemsList.join(", "),
         subtotal: `₱${subtotal}`,
         deliveryFee: `₱${deliveryFee}`,
