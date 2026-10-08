@@ -3,484 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Sweet Solace — baked stories</title>
-
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: #fffaf7;
-      color: #4a3832;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #f8eee9;
-      text-align: center;
-      padding: 35px 20px 80px;
-    }
-
-    .brand-logo {
-      width: 100%;
-      max-width: 260px;
-      height: auto;
-      margin: 0 auto 30px;
-      display: block;
-    }
-
-    .success-logo {
-      width: 100%;
-      max-width: 180px;
-      height: auto;
-      margin: 0 auto 15px;
-      display: block;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(40px, 8vw, 72px);
-      font-weight: normal;
-      letter-spacing: -1.5px;
-      color: #49352f;
-      margin-bottom: 12px;
-    }
-
-    .tagline {
-      color: #8c7168;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-      margin-bottom: 32px;
-    }
-
-    .button {
-      display: inline-block;
-      background: #59433b;
-      color: white;
-      text-decoration: none;
-      padding: 13px 25px;
-      border-radius: 30px;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      transition: 0.2s ease;
-    }
-
-    .button:hover {
-      opacity: 0.85;
-    }
-
-    section {
-      max-width: 1050px;
-      margin: auto;
-      padding: 85px 20px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #a0847a;
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-family: Georgia, serif;
-      font-size: clamp(34px, 6vw, 52px);
-      font-weight: normal;
-      color: #49352f;
-      margin-bottom: 12px;
-    }
-
-    .menu-detail {
-      color: #9a8178;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      margin-bottom: 38px;
-    }
-
-    .cookies {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .cookie {
-      background: white;
-      border: 1px solid #eadbd5;
-      border-radius: 22px;
-      padding: 27px;
-      display: flex;
-      flex-direction: column;
-      min-height: 275px;
-    }
-
-    .cookie-number {
-      font-size: 11px;
-      color: #b2988e;
-      letter-spacing: 1px;
-      margin-bottom: 17px;
-    }
-
-    .cookie h3 {
-      font-family: Georgia, serif;
-      font-size: 24px;
-      font-weight: normal;
-      color: #49352f;
-      margin-bottom: 10px;
-    }
-
-    .cookie-description {
-      color: #806a62;
-      font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 22px;
-      flex-grow: 1;
-    }
-
-    .cookie-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid #f0e5e1;
-      padding-top: 17px;
-    }
-
-    .price {
-      font-family: Georgia, serif;
-      font-size: 18px;
-      color: #49352f;
-    }
-
-    .quantity {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
-
-    .quantity button {
-      width: 32px;
-      height: 32px;
-      border: 1px solid #ddcbc4;
-      background: #fffaf7;
-      border-radius: 50%;
-      cursor: pointer;
-      color: #59433b;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .quantity button:active {
-      background: #f8eee9;
-    }
-
-    .quantity span {
-      min-width: 18px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .order-section {
-      background: #f8eee9;
-      max-width: none;
-    }
-
-    .order-inner {
-      max-width: 1050px;
-      margin: auto;
-      padding: 85px 20px;
-    }
-
-    .order-form {
-      max-width: 720px;
-      margin-top: 40px;
-    }
-
-    .field {
-      margin-bottom: 24px;
-    }
-
-    label {
-      display: block;
-      font-size: 12px;
-      letter-spacing: 0.7px;
-      color: #725c54;
-      margin-bottom: 8px;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 14px 15px;
-      border: 1px solid #decac2;
-      background: #fffdfc;
-      border-radius: 12px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      color: #4a3832;
-      outline: none;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #a98c82;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .radio-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .radio-option {
-      position: relative;
-    }
-
-    .radio-option input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .radio-option label {
-      margin: 0;
-      display: block;
-      padding: 11px 17px;
-      border: 1px solid #decac2;
-      background: #fffdfc;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 12px;
-      transition: 0.2s ease;
-    }
-
-    .radio-option input:checked + label {
-      background: #59433b;
-      border-color: #59433b;
-      color: white;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .payment-note {
-      background: #fffaf7;
-      border: 1px solid #eadbd5;
-      border-radius: 15px;
-      padding: 15px;
-      margin-top: 12px;
-      color: #806a62;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    .summary {
-      background: #fffdfc;
-      border: 1px solid #eadbd5;
-      border-radius: 18px;
-      padding: 23px;
-      margin: 35px 0 25px;
-    }
-
-    .summary-title {
-      font-family: Georgia, serif;
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: #49352f;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: 13px;
-      color: #806a62;
-      padding: 6px 0;
-    }
-
-    .summary-row.total {
-      border-top: 1px solid #eadbd5;
-      margin-top: 10px;
-      padding-top: 14px;
-      color: #49352f;
-      font-family: Georgia, serif;
-      font-size: 19px;
-    }
-
-    .place-order {
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      background: #59433b;
-      color: white;
-      padding: 16px;
-      border-radius: 30px;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      transition: 0.2s ease;
-    }
-
-    .place-order:hover {
-      opacity: 0.88;
-    }
-
-    .place-order:disabled {
-      background: #a89a94;
-      cursor: not-allowed;
-    }
-
-    /* SUCCESS CARD STYLES */
-    .success-card {
-      background: #fffdfc;
-      border: 1px solid #eadbd5;
-      border-radius: 24px;
-      padding: 45px 35px;
-      max-width: 650px;
-      margin-top: 35px;
-      text-align: center;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-
-    .success-tag {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #a0847a;
-      margin-bottom: 12px;
-    }
-
-    .success-card h3 {
-      font-family: Georgia, serif;
-      font-size: clamp(26px, 5vw, 36px);
-      font-weight: normal;
-      color: #49352f;
-      margin-bottom: 18px;
-    }
-
-    .success-text {
-      color: #806a62;
-      font-size: 15px;
-      line-height: 1.8;
-      margin-bottom: 28px;
-    }
-
-    .success-total-box {
-      display: inline-block;
-      background: #fffaf7;
-      border: 1px solid #eadbd5;
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-family: Georgia, serif;
-      font-size: 18px;
-      color: #49352f;
-      margin-bottom: 30px;
-    }
-
-    .new-order-btn {
-      display: inline-block;
-      background: transparent;
-      border: 1px solid #59433b;
-      color: #59433b;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      cursor: pointer;
-      transition: 0.2s ease;
-      text-transform: uppercase;
-    }
-
-    .new-order-btn:hover {
-      background: #59433b;
-      color: white;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      text-align: center;
-      padding: 65px 20px;
-      background: #fffaf7;
-      color: #8c7168;
-    }
-
-    footer .footer-title {
-      font-family: Georgia, serif;
-      font-size: 18px;
-      color: #59433b;
-      margin-bottom: 7px;
-    }
-
-    footer .footer-text {
-      font-size: 12px;
-      letter-spacing: 0.4px;
-      margin-bottom: 7px;
-    }
-
-    footer .heart {
-      font-size: 17px;
-      color: #8c7168;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding-bottom: 65px;
-      }
-
-      .brand-logo {
-        max-width: 210px;
-        margin-bottom: 20px;
-      }
-
-      .success-logo {
-        max-width: 150px;
-      }
-
-      section,
-      .order-inner {
-        padding-top: 65px;
-        padding-bottom: 65px;
-      }
-
-      .cookies {
-        grid-template-columns: 1fr;
-      }
-
-      .cookie {
-        min-height: 250px;
-      }
-
-      h1 {
-        line-height: 1.05;
-      }
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #fffaf7; color: #4a3832; font-family: Arial, sans-serif; line-height: 1.6; }
+    header { background: #f8eee9; text-align: center; padding: 35px 20px 80px; }
+    .brand-logo { width: 100%; max-width: 260px; height: auto; margin: 0 auto 30px; display: block; }
+    .success-logo { width: 100%; max-width: 180px; height: auto; margin: 0 auto 15px; display: block; }
+    h1 { font-family: Georgia, serif; font-size: clamp(40px, 8vw, 72px); font-weight: normal; letter-spacing: -1.5px; color: #49352f; margin-bottom: 12px; }
+    .tagline { color: #8c7168; font-size: 15px; letter-spacing: 0.5px; margin-bottom: 32px; }
+    .button { display: inline-block; background: #59433b; color: white; text-decoration: none; padding: 13px 25px; border-radius: 30px; font-size: 12px; letter-spacing: 1.5px; transition: 0.2s ease; }
+    .button:hover { opacity: 0.85; }
+    section { max-width: 1050px; margin: auto; padding: 85px 20px; }
+    .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #a0847a; margin-bottom: 12px; }
+    h2 { font-family: Georgia, serif; font-size: clamp(34px, 6vw, 52px); font-weight: normal; color: #49352f; margin-bottom: 12px; }
+    .menu-detail { color: #9a8178; font-size: 13px; letter-spacing: 0.5px; margin-bottom: 38px; }
+    .cookies { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .cookie { background: white; border: 1px solid #eadbd5; border-radius: 22px; padding: 27px; display: flex; flex-direction: column; min-height: 275px; }
+    .cookie-number { font-size: 11px; color: #b2988e; letter-spacing: 1px; margin-bottom: 17px; }
+    .cookie h3 { font-family: Georgia, serif; font-size: 24px; font-weight: normal; color: #49352f; margin-bottom: 10px; }
+    .cookie-description { color: #806a62; font-size: 14px; line-height: 1.7; margin-bottom: 22px; flex-grow: 1; }
+    .cookie-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f0e5e1; padding-top: 17px; }
+    .price { font-family: Georgia, serif; font-size: 18px; color: #49352f; }
+    .quantity { display: flex; align-items: center; gap: 13px; }
+    .quantity button { width: 32px; height: 32px; border: 1px solid #ddcbc4; background: #fffaf7; border-radius: 50%; cursor: pointer; color: #59433b; font-size: 16px; display: flex; align-items: center; justify-content: center; user-select: none; -webkit-tap-highlight-color: transparent; }
+    .quantity button:active { background: #f8eee9; }
+    .quantity span { min-width: 18px; text-align: center; font-size: 14px; }
+    .order-section { background: #f8eee9; max-width: none; }
+    .order-inner { max-width: 1050px; margin: auto; padding: 85px 20px; }
+    .order-form { max-width: 720px; margin-top: 40px; }
+    .field { margin-bottom: 24px; }
+    label { display: block; font-size: 12px; letter-spacing: 0.7px; color: #725c54; margin-bottom: 8px; }
+    input, textarea, select { width: 100%; padding: 14px 15px; border: 1px solid #decac2; background: #fffdfc; border-radius: 12px; font-family: Arial, sans-serif; font-size: 14px; color: #4a3832; outline: none; }
+    input:focus, textarea:focus, select:focus { border-color: #a98c82; }
+    textarea { min-height: 100px; resize: vertical; }
+    .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .radio-option { position: relative; }
+    .radio-option input { position: absolute; opacity: 0; pointer-events: none; }
+    .radio-option label { margin: 0; display: block; padding: 11px 17px; border: 1px solid #decac2; background: #fffdfc; border-radius: 30px; cursor: pointer; font-size: 12px; transition: 0.2s ease; }
+    .radio-option input:checked + label { background: #59433b; border-color: #59433b; color: white; }
+    .hidden { display: none !important; }
+    .payment-details-card { background: #fffaf7; border: 1px solid #eadbd5; border-radius: 15px; padding: 18px; margin-top: 12px; color: #49352f; font-size: 13px; line-height: 1.6; }
+    .payment-details-card strong { color: #59433b; }
+    .summary { background: #fffdfc; border: 1px solid #eadbd5; border-radius: 18px; padding: 23px; margin: 35px 0 25px; }
+    .summary-title { font-family: Georgia, serif; font-size: 20px; margin-bottom: 15px; color: #49352f; }
+    .summary-row { display: flex; justify-content: space-between; gap: 20px; font-size: 13px; color: #806a62; padding: 6px 0; }
+    .summary-row.total { border-top: 1px solid #eadbd5; margin-top: 10px; padding-top: 14px; color: #49352f; font-family: Georgia, serif; font-size: 19px; }
+    .place-order { width: 100%; border: none; cursor: pointer; background: #59433b; color: white; padding: 16px; border-radius: 30px; font-size: 12px; letter-spacing: 1.5px; transition: 0.2s ease; }
+    .place-order:hover { opacity: 0.88; }
+    .place-order:disabled { background: #a89a94; cursor: not-allowed; }
+    .success-card { background: #fffdfc; border: 1px solid #eadbd5; border-radius: 24px; padding: 45px 35px; max-width: 650px; margin-top: 35px; text-align: center; animation: fadeIn 0.4s ease-in-out; }
+    .success-tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #a0847a; margin-bottom: 12px; }
+    .success-card h3 { font-family: Georgia, serif; font-size: clamp(26px, 5vw, 36px); font-weight: normal; color: #49352f; margin-bottom: 18px; }
+    .success-text { color: #806a62; font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
+    .success-total-box { display: inline-block; background: #fffaf7; border: 1px solid #eadbd5; padding: 12px 28px; border-radius: 30px; font-family: Georgia, serif; font-size: 18px; color: #49352f; margin-bottom: 30px; }
+    .new-order-btn { display: inline-block; background: transparent; border: 1px solid #59433b; color: #59433b; padding: 12px 24px; border-radius: 30px; font-size: 11px; letter-spacing: 1.5px; cursor: pointer; transition: 0.2s ease; text-transform: uppercase; }
+    .new-order-btn:hover { background: #59433b; color: white; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    footer { text-align: center; padding: 65px 20px; background: #fffaf7; color: #8c7168; }
+    footer .footer-title { font-family: Georgia, serif; font-size: 18px; color: #59433b; margin-bottom: 7px; }
+    footer .footer-text { font-size: 12px; letter-spacing: 0.4px; margin-bottom: 7px; }
+    footer .heart { font-size: 17px; color: #8c7168; }
+    @media (max-width: 700px) { header { padding-bottom: 65px; } .brand-logo { max-width: 210px; margin-bottom: 20px; } .success-logo { max-width: 150px; } section, .order-inner { padding-top: 65px; padding-bottom: 65px; } .cookies { grid-template-columns: 1fr; } .cookie { min-height: 250px; } h1 { line-height: 1.05; } }
   </style>
 </head>
-
 <body>
 
   <!-- HERO -->
   <header>
-    <!-- OFFICIAL SVG LOGO -->
     <div class="brand-logo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
         <rect width="400" height="400" fill="#f8eee9"/>
@@ -496,41 +86,24 @@
         <text x="200" y="258" font-family="Georgia, serif" font-size="12.5" font-style="italic" fill="#59433b" text-anchor="middle" letter-spacing="0.5">where every bite tells a sweet story ♡</text>
       </svg>
     </div>
-
     <h1>sweet solace; baked stories</h1>
-
     <p class="tagline">little moments, freshly baked.</p>
-
     <a href="#menu" class="button">VIEW COOKIES</a>
   </header>
 
   <!-- MENU -->
   <section id="menu">
-
     <div class="section-label">our menu</div>
-
     <h2>Fresh from the oven.</h2>
-
-    <p class="menu-detail">
-      70–75g · palm-sized · freshly baked
-    </p>
+    <p class="menu-detail">70–75g · palm-sized · freshly baked</p>
 
     <div class="cookies">
-
-      <!-- 1 -->
       <div class="cookie">
         <div class="cookie-number">01</div>
-
         <h3>Cheesy Cream Drop</h3>
-
-        <p class="cookie-description">
-          A soft, buttery cookie with a creamy cream cheese center —
-          rich, mellow, and just the right kind of indulgent.
-        </p>
-
+        <p class="cookie-description">A soft, buttery cookie with a creamy cream cheese center — rich, mellow, and just the right kind of indulgent.</p>
         <div class="cookie-bottom">
           <span class="price">₱45</span>
-
           <div class="quantity">
             <button type="button" onclick="changeQty(0, -1)">−</button>
             <span id="qty-0">0</span>
@@ -538,22 +111,12 @@
           </div>
         </div>
       </div>
-
-      <!-- 2 -->
       <div class="cookie">
         <div class="cookie-number">02</div>
-
         <h3>Double Choco Fudge</h3>
-
-        <p class="cookie-description">
-          Deep cocoa goodness folded with chocolate chips and finished
-          with a soft marshmallow on top, inspired by the cozy,
-          gooey goodness of s’mores.
-        </p>
-
+        <p class="cookie-description">Deep cocoa goodness folded with chocolate chips and finished with a soft marshmallow on top, inspired by the cozy, gooey goodness of s’mores.</p>
         <div class="cookie-bottom">
           <span class="price">₱45</span>
-
           <div class="quantity">
             <button type="button" onclick="changeQty(1, -1)">−</button>
             <span id="qty-1">0</span>
@@ -561,21 +124,12 @@
           </div>
         </div>
       </div>
-
-      <!-- 3 -->
       <div class="cookie">
         <div class="cookie-number">03</div>
-
         <h3>White Matcha Fusion</h3>
-
-        <p class="cookie-description">
-          Earthy culinary-grade matcha meets creamy white chocolate chips
-          in a delicate balance of bittersweet and sweet.
-        </p>
-
+        <p class="cookie-description">Earthy culinary-grade matcha meets creamy white chocolate chips in a delicate balance of bittersweet and sweet.</p>
         <div class="cookie-bottom">
           <span class="price">₱45</span>
-
           <div class="quantity">
             <button type="button" onclick="changeQty(2, -1)">−</button>
             <span id="qty-2">0</span>
@@ -583,21 +137,12 @@
           </div>
         </div>
       </div>
-
-      <!-- 4 -->
       <div class="cookie">
         <div class="cookie-number">04</div>
-
         <h3>Biscoff Spread Delight</h3>
-
-        <p class="cookie-description">
-          Warm, buttery cookie goodness with the unmistakable caramelized
-          sweetness of Biscoff spread — cozy, rich, and wonderfully addictive.
-        </p>
-
+        <p class="cookie-description">Warm, buttery cookie goodness with the unmistakable caramelized sweetness of Biscoff spread — cozy, rich, and wonderfully addictive.</p>
         <div class="cookie-bottom">
           <span class="price">₱45</span>
-
           <div class="quantity">
             <button type="button" onclick="changeQty(3, -1)">−</button>
             <span id="qty-3">0</span>
@@ -605,22 +150,12 @@
           </div>
         </div>
       </div>
-
-      <!-- 5 -->
       <div class="cookie">
         <div class="cookie-number">05</div>
-
         <h3>Choco Walnut Blend</h3>
-
-        <p class="cookie-description">
-          Rich chocolate cookie dough studded with chocolate and crunchy
-          walnuts, bringing together deep cocoa richness and a satisfying
-          nutty bite.
-        </p>
-
+        <p class="cookie-description">Rich chocolate cookie dough studded with chocolate and crunchy walnuts, bringing together deep cocoa richness and a satisfying nutty bite.</p>
         <div class="cookie-bottom">
           <span class="price">₱45</span>
-
           <div class="quantity">
             <button type="button" onclick="changeQty(4, -1)">−</button>
             <span id="qty-4">0</span>
@@ -628,22 +163,12 @@
           </div>
         </div>
       </div>
-
-      <!-- 6 -->
       <div class="cookie">
         <div class="cookie-number">06</div>
-
         <h3>Red Velvet Crumble</h3>
-
-        <p class="cookie-description">
-          A soft red velvet cookie with a creamy cream cheese center —
-          subtly cocoa-rich, velvety, and finished with that signature
-          sweet-tangy contrast.
-        </p>
-
+        <p class="cookie-description">A soft red velvet cookie with a creamy cream cheese center — subtly cocoa-rich, velvety, and finished with that signature sweet-tangy contrast.</p>
         <div class="cookie-bottom">
           <span class="price">₱45</span>
-
           <div class="quantity">
             <button type="button" onclick="changeQty(5, -1)">−</button>
             <span id="qty-5">0</span>
@@ -651,229 +176,139 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ORDER -->
+  <!-- ORDER SECTION -->
   <div class="order-section">
-
     <div class="order-inner">
-
       <div class="section-label">place your order</div>
-
       <h2>A little something for you.</h2>
 
       <form class="order-form" id="orderForm" onsubmit="placeOrder(event)">
 
-        <!-- NAME -->
+        <!-- LOCATION AREA SELECTION -->
+        <div class="field">
+          <label>WHERE ARE WE SHIPPING YOUR COOKIES?</label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="locationGroup" id="locCalapan" value="Calapan City" checked onchange="onLocationChange()">
+              <label for="locCalapan">Calapan City (Local)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="locationGroup" id="locLuzon" value="Luzon-Wide" onchange="onLocationChange()">
+              <label for="locLuzon">Luzon-Wide (J&T Courier)</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- FULL NAME -->
         <div class="field">
           <label for="name">FULL NAME</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Your name"
-            required
-          >
+          <input type="text" id="name" placeholder="Your name" required>
         </div>
 
-        <!-- FACEBOOK -->
+        <!-- FACEBOOK NAME -->
         <div class="field">
           <label for="facebook">FACEBOOK NAME</label>
-          <input
-            type="text"
-            id="facebook"
-            placeholder="Your Facebook name"
-          >
+          <input type="text" id="facebook" placeholder="Your Facebook name">
         </div>
 
-        <!-- CONTACT -->
+        <!-- CONTACT NUMBER -->
         <div class="field">
           <label for="contact">CONTACT NUMBER</label>
-          <input
-            type="tel"
-            id="contact"
-            placeholder="09XXXXXXXXX"
-            required
-          >
+          <input type="tel" id="contact" placeholder="09XXXXXXXXX" required>
         </div>
 
-        <!-- PICKUP / DELIVERY -->
-        <div class="field">
-
+        <!-- METHOD (PICKUP / DELIVERY) -->
+        <div class="field" id="methodField">
           <label>HOW WOULD YOU LIKE TO RECEIVE YOUR ORDER?</label>
-
           <div class="radio-group">
-
             <div class="radio-option">
-              <input
-                type="radio"
-                name="method"
-                id="pickup"
-                value="Pickup"
-                checked
-                onchange="toggleAddress()"
-              >
+              <input type="radio" name="method" id="pickup" value="Pickup" checked onchange="toggleAddress()">
               <label for="pickup">Pickup</label>
             </div>
-
             <div class="radio-option">
-              <input
-                type="radio"
-                name="method"
-                id="delivery"
-                value="Delivery"
-                onchange="toggleAddress()"
-              >
+              <input type="radio" name="method" id="delivery" value="Delivery" onchange="toggleAddress()">
               <label for="delivery">Delivery</label>
             </div>
-
           </div>
         </div>
 
         <!-- ADDRESS -->
         <div class="field hidden" id="addressBox">
-
-          <label for="address">DELIVERY ADDRESS</label>
-
-          <textarea
-            id="address"
-            placeholder="Complete delivery address"
-          ></textarea>
-
+          <label for="address" id="addressLabel">DELIVERY ADDRESS</label>
+          <textarea id="address" placeholder="Complete delivery address"></textarea>
         </div>
 
-        <!-- DATE -->
+        <!-- PREFERRED DATE -->
         <div class="field">
-
-          <label for="date">PREFERRED DATE (3-day advance notice for prep & resting)</label>
-
-          <input
-            type="date"
-            id="date"
-            required
-          >
-
+          <label for="date" id="dateLabel">PREFERRED DATE / DROP-OFF DATE</label>
+          <input type="date" id="date" required>
         </div>
 
-        <!-- TIME -->
-        <div class="field">
-
+        <!-- PREFERRED TIME -->
+        <div class="field" id="timeField">
           <label for="time">PREFERRED TIME</label>
-
-          <input
-            type="time"
-            id="time"
-            required
-          >
-
+          <input type="time" id="time">
         </div>
 
-        <!-- PAYMENT -->
+        <!-- PAYMENT METHOD -->
         <div class="field">
-
           <label>PAYMENT METHOD</label>
-
           <div class="radio-group">
-
             <div class="radio-option">
-              <input
-                type="radio"
-                name="payment"
-                id="gcash"
-                value="GCash"
-                onchange="togglePayment()"
-                checked
-              >
+              <input type="radio" name="payment" id="gcash" value="GCash" onchange="togglePayment()" checked>
               <label for="gcash">GCash</label>
             </div>
-
             <div class="radio-option">
-              <input
-                type="radio"
-                name="payment"
-                id="maya"
-                value="Maya"
-                onchange="togglePayment()"
-              >
+              <input type="radio" name="payment" id="maya" value="Maya" onchange="togglePayment()">
               <label for="maya">Maya</label>
             </div>
-
-            <div class="radio-option">
-              <input
-                type="radio"
-                name="payment"
-                id="cash"
-                value="Cash"
-                onchange="togglePayment()"
-              >
+            <div class="radio-option" id="cashOption">
+              <input type="radio" name="payment" id="cash" value="Cash" onchange="togglePayment()">
               <label for="cash">Cash</label>
             </div>
-
           </div>
         </div>
 
-        <!-- PAYMENT REFERENCE -->
+        <!-- PAYMENT DETAILS / ACCOUNT NUMBER -->
         <div id="paymentBox">
-
-          <div class="field">
-
-            <label for="paymentReference">
-              PAYMENT REFERENCE / LAST 4 DIGITS
-            </label>
-
-            <input
-              type="text"
-              id="paymentReference"
-              placeholder="e.g. 1234"
-            >
-
-            <div class="payment-note">
-              For GCash or Maya payments, please send your payment
-              confirmation/screenshot after placing your order.
+          <div class="payment-details-card">
+            <div><strong>GCash / Maya Number:</strong> 09456141099</div>
+            <div><strong>Account Name:</strong> A.C.M.</div>
+            <div style="font-size: 11px; margin-top: 6px; color: #806a62;">
+              Please send your payment screenshot to our Facebook page after placing your order. ♡
             </div>
-
           </div>
 
+          <div class="field" style="margin-top: 15px;">
+            <label for="paymentReference">PAYMENT REFERENCE / LAST 4 DIGITS</label>
+            <input type="text" id="paymentReference" placeholder="e.g. 1234">
+          </div>
         </div>
 
         <!-- NOTES -->
         <div class="field">
-
           <label for="notes">SPECIAL NOTES</label>
-
-          <textarea
-            id="notes"
-            placeholder="Anything you'd like us to know?"
-          ></textarea>
-
+          <textarea id="notes" placeholder="Anything you'd like us to know?"></textarea>
         </div>
 
         <!-- SUMMARY -->
         <div class="summary">
-
-          <div class="summary-title">
-            Your order
-          </div>
-
+          <div class="summary-title">Your order</div>
           <div id="summaryItems"></div>
-
           <div class="summary-row">
-            <span>Delivery fee</span>
+            <span id="shippingLabel">Delivery fee</span>
             <span id="deliveryFee">₱0</span>
           </div>
-
           <div class="summary-row total">
             <span>Total</span>
             <span id="total">₱0</span>
           </div>
-
         </div>
 
-        <button class="place-order" id="submitBtn" type="submit">
-          PLACE MY ORDER
-        </button>
-
+        <button class="place-order" id="submitBtn" type="submit">PLACE MY ORDER</button>
       </form>
 
       <!-- SUCCESS CARD -->
@@ -893,7 +328,6 @@
             <text x="200" y="258" font-family="Georgia, serif" font-size="12.5" font-style="italic" fill="#59433b" text-anchor="middle" letter-spacing="0.5">where every bite tells a sweet story ♡</text>
           </svg>
         </div>
-
         <div class="success-tag">order received ♡</div>
         <h3>Thank you for choosing Sweet Solace.</h3>
         <p class="success-text">
@@ -913,21 +347,13 @@
 
   <!-- FOOTER -->
   <footer>
-
-    <div class="footer-title">
-      sweet solace; baked stories
-    </div>
-
-    <div class="footer-text">
-      where every bite tells a sweet story
-    </div>
-
+    <div class="footer-title">sweet solace; baked stories</div>
+    <div class="footer-text">where every bite tells a sweet story</div>
     <div class="heart">♡</div>
-
   </footer>
 
   <script>
-
+    // Google Apps Script Web App URL:
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVGnEdeEcyPuYu6rwzi7_wuKJERMg8R4YEiOBE4jB-RQ0OCxtoPbDcKoS6bVaGJqA2/exec";
 
     const cookies = [
@@ -940,22 +366,67 @@
     ];
 
     const price = 45;
-
     let quantities = [0, 0, 0, 0, 0, 0];
+
+    function onLocationChange() {
+      const isLuzon = document.getElementById("locLuzon").checked;
+
+      const methodField = document.getElementById("methodField");
+      const cashOption = document.getElementById("cashOption");
+      const timeField = document.getElementById("timeField");
+      const dateLabel = document.getElementById("dateLabel");
+      const addressLabel = document.getElementById("addressLabel");
+
+      if (isLuzon) {
+        // Shipping to Luzon wide
+        methodField.classList.add("hidden");
+        cashOption.classList.add("hidden");
+        timeField.classList.add("hidden");
+
+        dateLabel.textContent = "PREFERRED DROP-OFF DATE TO J&T (4-day advance notice)";
+        addressLabel.textContent = "FULL SHIPPING ADDRESS (Luzon)";
+
+        // Force GCash if Cash was previously selected
+        if (document.getElementById("cash").checked) {
+          document.getElementById("gcash").checked = true;
+          togglePayment();
+        }
+
+        // Show address input
+        document.getElementById("addressBox").classList.remove("hidden");
+        document.getElementById("address").required = true;
+
+      } else {
+        // Calapan Local
+        methodField.classList.remove("hidden");
+        cashOption.classList.remove("hidden");
+        timeField.classList.remove("hidden");
+
+        dateLabel.textContent = "PREFERRED DATE (3-day advance notice for prep & resting)";
+        addressLabel.textContent = "DELIVERY ADDRESS";
+
+        toggleAddress();
+      }
+
+      setMinDate();
+      updateSummary();
+    }
 
     function setMinDate() {
       const dateInput = document.getElementById("date");
       if (!dateInput) return;
 
+      const isLuzon = document.getElementById("locLuzon").checked;
+      const leadDays = isLuzon ? 4 : 3;
+
       const targetDate = new Date();
-      targetDate.setDate(targetDate.getDate() + 3);
+      targetDate.setDate(targetDate.getDate() + leadDays);
 
       const year = targetDate.getFullYear();
       const month = String(targetDate.getMonth() + 1).padStart(2, '0');
       const day = String(targetDate.getDate()).padStart(2, '0');
 
       const minDateString = `${year}-${month}-${day}`;
-      
       dateInput.min = minDateString;
       dateInput.value = minDateString;
     }
@@ -965,35 +436,28 @@
       const amt = parseInt(amount, 10);
 
       quantities[idx] = (quantities[idx] || 0) + amt;
-
-      if (quantities[idx] < 0) {
-        quantities[idx] = 0;
-      }
+      if (quantities[idx] < 0) quantities[idx] = 0;
 
       const qtyElement = document.getElementById("qty-" + idx);
-      if (qtyElement) {
-        qtyElement.textContent = quantities[idx];
-      }
+      if (qtyElement) qtyElement.textContent = quantities[idx];
 
       updateSummary();
     }
 
     function updateSummary() {
-
       const summaryItems = document.getElementById("summaryItems");
       const deliveryFeeElement = document.getElementById("deliveryFee");
       const totalElement = document.getElementById("total");
+      const shippingLabel = document.getElementById("shippingLabel");
 
       if (!summaryItems || !deliveryFeeElement || !totalElement) return;
 
       summaryItems.innerHTML = "";
-
       let subtotal = 0;
       let totalCookiesCount = 0;
 
       cookies.forEach((cookie, index) => {
         const qty = quantities[index] || 0;
-
         if (qty > 0) {
           totalCookiesCount += qty;
           const itemTotal = qty * price;
@@ -1001,57 +465,77 @@
 
           const row = document.createElement("div");
           row.className = "summary-row";
-          row.innerHTML = `
-            <span>${cookie} × ${qty}</span>
-            <span>₱${itemTotal}</span>
-          `;
+          row.innerHTML = `<span>${cookie} × ${qty}</span><span>₱${itemTotal}</span>`;
           summaryItems.appendChild(row);
         }
       });
 
-      const selectedMethodElem = document.querySelector('input[name="method"]:checked');
-      const deliveryMethod = selectedMethodElem ? selectedMethodElem.value : "Pickup";
-
+      const isLuzon = document.getElementById("locLuzon").checked;
       let deliveryFee = 0;
-      if (deliveryMethod === "Delivery" && totalCookiesCount > 0) {
-        deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
+
+      if (isLuzon) {
+        shippingLabel.textContent = "J&T Shipping Fee";
+        if (totalCookiesCount > 0) {
+          if (totalCookiesCount <= 12) {
+            deliveryFee = 80;
+          } else if (totalCookiesCount <= 24) {
+            deliveryFee = 90;
+          } else {
+            deliveryFee = 100;
+          }
+        }
+      } else {
+        shippingLabel.textContent = "Delivery Fee";
+        const isDelivery = document.getElementById("delivery").checked;
+        if (isDelivery && totalCookiesCount > 0) {
+          deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
+        }
       }
 
       const total = subtotal + deliveryFee;
-
       deliveryFeeElement.textContent = `₱${deliveryFee}`;
       totalElement.textContent = `₱${total}`;
     }
 
     function toggleAddress() {
+      const isLuzon = document.getElementById("locLuzon").checked;
+      if (isLuzon) return;
+
       const deliveryRadio = document.getElementById("delivery");
-      const delivery = deliveryRadio ? deliveryRadio.checked : false;
+      const isDelivery = deliveryRadio ? deliveryRadio.checked : false;
 
       const addressBox = document.getElementById("addressBox");
-      if (addressBox) {
-        addressBox.classList.toggle("hidden", !delivery);
-      }
+      const addressInput = document.getElementById("address");
+
+      if (addressBox) addressBox.classList.toggle("hidden", !isDelivery);
+      if (addressInput) addressInput.required = isDelivery;
 
       updateSummary();
     }
 
     function togglePayment() {
       const cashRadio = document.getElementById("cash");
-      const cash = cashRadio ? cashRadio.checked : false;
+      const isCash = cashRadio ? cashRadio.checked : false;
 
       const paymentBox = document.getElementById("paymentBox");
       if (paymentBox) {
-        paymentBox.classList.toggle("hidden", cash);
+        paymentBox.classList.toggle("hidden", isCash);
       }
     }
 
     async function placeOrder(event) {
       event.preventDefault();
 
-      const hasOrder = quantities.some(qty => qty > 0);
+      const totalCookiesCount = quantities.reduce((a, b) => a + b, 0);
 
-      if (!hasOrder) {
+      if (totalCookiesCount === 0) {
         alert("Please choose at least one cookie before placing your order. 🍪");
+        return;
+      }
+
+      const isLuzon = document.getElementById("locLuzon").checked;
+      if (isLuzon && totalCookiesCount < 6) {
+        alert("Minimum order for Luzon-wide J&T shipping is 6 cookies. 📦");
         return;
       }
 
@@ -1061,38 +545,44 @@
 
       let orderedItemsList = [];
       let subtotal = 0;
-      let totalCookiesCount = 0;
 
       cookies.forEach((cookie, index) => {
         const qty = quantities[index] || 0;
         if (qty > 0) {
-          totalCookiesCount += qty;
           orderedItemsList.push(`${cookie} x${qty}`);
           subtotal += qty * price;
         }
       });
 
-      const methodElem = document.querySelector('input[name="method"]:checked');
-      const paymentElem = document.querySelector('input[name="payment"]:checked');
-
-      const method = methodElem ? methodElem.value : "Pickup";
-      const payment = paymentElem ? paymentElem.value : "GCash";
-
+      let method = "Pickup";
       let deliveryFee = 0;
-      if (method === "Delivery" && totalCookiesCount > 0) {
-        deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
+
+      if (isLuzon) {
+        method = "J&T Shipping (Luzon)";
+        if (totalCookiesCount <= 12) deliveryFee = 80;
+        else if (totalCookiesCount <= 24) deliveryFee = 90;
+        else deliveryFee = 100;
+      } else {
+        const isDelivery = document.getElementById("delivery").checked;
+        if (isDelivery) {
+          method = "Calapan Delivery";
+          deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
+        }
       }
 
+      const paymentElem = document.querySelector('input[name="payment"]:checked');
+      const payment = paymentElem ? paymentElem.value : "GCash";
       const total = subtotal + deliveryFee;
 
       const orderData = {
+        locationGroup: isLuzon ? "Luzon-Wide" : "Calapan City",
         name: document.getElementById("name").value.trim(),
         facebook: document.getElementById("facebook").value.trim() || "N/A",
         contact: document.getElementById("contact").value.trim(),
         method: method,
-        address: method === "Delivery" ? document.getElementById("address").value.trim() : "N/A (Pickup)",
+        address: (isLuzon || method === "Calapan Delivery") ? document.getElementById("address").value.trim() : "N/A (Pickup)",
         date: document.getElementById("date").value,
-        time: document.getElementById("time").value,
+        time: isLuzon ? "N/A (J&T Drop-off)" : (document.getElementById("time").value || "N/A"),
         payment: payment,
         paymentReference: document.getElementById("paymentReference").value.trim() || "N/A",
         notes: document.getElementById("notes").value.trim() || "N/A",
@@ -1102,29 +592,26 @@
         total: `₱${total}`
       };
 
-      try {
-        await fetch(SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(orderData)
-        });
-
-        document.getElementById("orderForm").classList.add("hidden");
-        document.getElementById("successTotal").textContent = `₱${total}`;
-        document.getElementById("successCard").classList.remove("hidden");
-
-        document.getElementById("successCard").scrollIntoView({ behavior: 'smooth' });
-
-      } catch (error) {
-        alert("Oops! Something went wrong while sending your order. Please try again.");
-        console.error("Order submit error:", error);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "PLACE MY ORDER";
+      if (SCRIPT_URL && SCRIPT_URL !== "") {
+        try {
+          await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(orderData)
+          });
+        } catch (error) {
+          console.error("Order submit error:", error);
+        }
       }
+
+      document.getElementById("orderForm").classList.add("hidden");
+      document.getElementById("successTotal").textContent = `₱${total}`;
+      document.getElementById("successCard").classList.remove("hidden");
+      document.getElementById("successCard").scrollIntoView({ behavior: 'smooth' });
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "PLACE MY ORDER";
     }
 
     function resetOrderForm() {
@@ -1134,10 +621,8 @@
         const qtySpan = document.getElementById(`qty-${i}`);
         if (qtySpan) qtySpan.textContent = "0";
       });
-      toggleAddress();
+      onLocationChange();
       togglePayment();
-      setMinDate();
-      updateSummary();
 
       document.getElementById("successCard").classList.add("hidden");
       document.getElementById("orderForm").classList.remove("hidden");
@@ -1145,11 +630,9 @@
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-      setMinDate();
-      updateSummary();
+      onLocationChange();
+      togglePayment();
     });
-
   </script>
-
 </body>
 </html>
