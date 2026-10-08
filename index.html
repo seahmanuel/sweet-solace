@@ -932,7 +932,7 @@
   <script>
 
     // Paste your Google Web App URL between the quotes below:
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVGnEdeEcyPuYu6rwzi7_wuKJERMg8R4YEiOBE4jB-RQ0OCxtoPbDcKoS6bVaGJqA2/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVGnEdeEcyPuYu6rwzi7_wuKJERMg8R4YEiOBE4jB-RQ0OCxtoPbDcKoS6bVaGJqA2/exec";";
 
     const cookies = [
       "Cheesy Cream Drop",
@@ -944,7 +944,6 @@
     ];
 
     const price = 45;
-    const deliveryPrice = 30;
 
     let quantities = [0, 0, 0, 0, 0, 0];
 
@@ -997,6 +996,7 @@
       summaryItems.innerHTML = "";
 
       let subtotal = 0;
+      let totalCookiesCount = 0;
 
       cookies.forEach((cookie, index) => {
 
@@ -1004,6 +1004,7 @@
 
         if (qty > 0) {
 
+          totalCookiesCount += qty;
           const itemTotal = qty * price;
 
           subtotal += itemTotal;
@@ -1028,10 +1029,11 @@
           'input[name="method"]:checked'
         ).value;
 
-      const deliveryFee =
-        deliveryMethod === "Delivery"
-          ? deliveryPrice
-          : 0;
+      // Dynamic delivery fee calculation: ₱40 if 5 or fewer, ₱50 if 6 or more
+      let deliveryFee = 0;
+      if (deliveryMethod === "Delivery") {
+        deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
+      }
 
       const total =
         subtotal + deliveryFee;
@@ -1095,10 +1097,12 @@
 
       let orderedItemsList = [];
       let subtotal = 0;
+      let totalCookiesCount = 0;
 
       cookies.forEach((cookie, index) => {
         const qty = quantities[index];
         if (qty > 0) {
+          totalCookiesCount += qty;
           orderedItemsList.push(`${cookie} x${qty}`);
           subtotal += qty * price;
         }
@@ -1109,7 +1113,13 @@
 
       const method = methodElem ? methodElem.value : "Pickup";
       const payment = paymentElem ? paymentElem.value : "GCash";
-      const deliveryFee = method === "Delivery" ? deliveryPrice : 0;
+
+      // Dynamic delivery fee logic for script payload
+      let deliveryFee = 0;
+      if (method === "Delivery") {
+        deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
+      }
+
       const total = subtotal + deliveryFee;
 
       const orderData = {
