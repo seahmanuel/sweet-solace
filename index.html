@@ -163,14 +163,23 @@
     }
 
     .quantity button {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border: 1px solid #ddcbc4;
       background: #fffaf7;
       border-radius: 50%;
       cursor: pointer;
       color: #59433b;
       font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .quantity button:active {
+      background: #f8eee9;
     }
 
     .quantity span {
@@ -474,27 +483,16 @@
     <!-- OFFICIAL SVG LOGO -->
     <div class="brand-logo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
-        <!-- Background -->
         <rect width="400" height="400" fill="#f8eee9"/>
-        
-        <!-- Main Oval Frame -->
         <ellipse cx="200" cy="200" rx="172" ry="122" fill="#f8eee9" stroke="#59433b" stroke-width="2"/>
         <ellipse cx="200" cy="200" rx="162" ry="112" fill="#fffdfc" stroke="#decac2" stroke-width="1.5"/>
-
-        <!-- Top Dainty Ribbon Badge -->
         <path d="M 135 112 Q 200 122 265 112 L 255 92 Q 200 100 145 92 Z" fill="#59433b"/>
         <text x="200" y="107" font-family="Arial, sans-serif" font-size="9" fill="#fffaf7" text-anchor="middle" letter-spacing="2.5" font-weight="bold">BAKED WITH LOVE</text>
-
-        <!-- Main Brand Title -->
         <text x="200" y="175" font-family="Georgia, serif" font-size="33" font-weight="bold" fill="#49352f" text-anchor="middle">sweet solace;</text>
         <text x="200" y="205" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#8c7168" text-anchor="middle">baked stories</text>
-
-        <!-- Divider Line & Sparkle Accents -->
         <path d="M 120 222 L 122 227 L 127 229 L 122 231 L 120 236 L 118 231 L 113 229 L 118 227 Z" fill="#a0847a"/>
         <line x1="135" y1="229" x2="265" y2="229" stroke="#decac2" stroke-width="1"/>
         <path d="M 280 222 L 282 227 L 287 229 L 282 231 L 280 236 L 278 231 L 273 229 L 278 227 Z" fill="#a0847a"/>
-
-        <!-- Bottom Tagline -->
         <text x="200" y="258" font-family="Georgia, serif" font-size="12.5" font-style="italic" fill="#59433b" text-anchor="middle" letter-spacing="0.5">where every bite tells a sweet story ♡</text>
       </svg>
     </div>
@@ -534,9 +532,9 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(0, -1)">−</button>
+            <button type="button" onclick="changeQty(0, -1)">−</button>
             <span id="qty-0">0</span>
-            <button onclick="changeQty(0, 1)">+</button>
+            <button type="button" onclick="changeQty(0, 1)">+</button>
           </div>
         </div>
       </div>
@@ -557,9 +555,9 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(1, -1)">−</button>
+            <button type="button" onclick="changeQty(1, -1)">−</button>
             <span id="qty-1">0</span>
-            <button onclick="changeQty(1, 1)">+</button>
+            <button type="button" onclick="changeQty(1, 1)">+</button>
           </div>
         </div>
       </div>
@@ -579,9 +577,9 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(2, -1)">−</button>
+            <button type="button" onclick="changeQty(2, -1)">−</button>
             <span id="qty-2">0</span>
-            <button onclick="changeQty(2, 1)">+</button>
+            <button type="button" onclick="changeQty(2, 1)">+</button>
           </div>
         </div>
       </div>
@@ -601,9 +599,9 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(3, -1)">−</button>
+            <button type="button" onclick="changeQty(3, -1)">−</button>
             <span id="qty-3">0</span>
-            <button onclick="changeQty(3, 1)">+</button>
+            <button type="button" onclick="changeQty(3, 1)">+</button>
           </div>
         </div>
       </div>
@@ -624,9 +622,9 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(4, -1)">−</button>
+            <button type="button" onclick="changeQty(4, -1)">−</button>
             <span id="qty-4">0</span>
-            <button onclick="changeQty(4, 1)">+</button>
+            <button type="button" onclick="changeQty(4, 1)">+</button>
           </div>
         </div>
       </div>
@@ -647,9 +645,9 @@
           <span class="price">₱45</span>
 
           <div class="quantity">
-            <button onclick="changeQty(5, -1)">−</button>
+            <button type="button" onclick="changeQty(5, -1)">−</button>
             <span id="qty-5">0</span>
-            <button onclick="changeQty(5, 1)">+</button>
+            <button type="button" onclick="changeQty(5, 1)">+</button>
           </div>
         </div>
       </div>
@@ -880,7 +878,6 @@
 
       <!-- SUCCESS CARD -->
       <div class="success-card hidden" id="successCard">
-        <!-- LOGO AT THE END OF ORDER -->
         <div class="success-logo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
             <rect width="400" height="400" fill="#fffdfc"/>
@@ -931,7 +928,6 @@
 
   <script>
 
-    // Paste your Google Web App URL between the quotes below:
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVGnEdeEcyPuYu6rwzi7_wuKJERMg8R4YEiOBE4jB-RQ0OCxtoPbDcKoS6bVaGJqA2/exec";";
 
     const cookies = [
@@ -947,51 +943,48 @@
 
     let quantities = [0, 0, 0, 0, 0, 0];
 
-    // Function to calculate and set minimum selectable date (3-day lead time)
     function setMinDate() {
       const dateInput = document.getElementById("date");
       if (!dateInput) return;
 
-      const today = new Date();
-      
-      // Add 3 days for dough resting / prep time
-      today.setDate(today.getDate() + 3);
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 3);
 
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, '0');
-      const day = String(today.getDate()).padStart(2, '0');
+      const year = targetDate.getFullYear();
+      const month = String(targetDate.getMonth() + 1).padStart(2, '0');
+      const day = String(targetDate.getDate()).padStart(2, '0');
 
       const minDateString = `${year}-${month}-${day}`;
       
-      // Enforce minimum selectable date on HTML calendar
       dateInput.min = minDateString;
       dateInput.value = minDateString;
     }
 
     function changeQty(index, amount) {
+      const idx = parseInt(index, 10);
+      const amt = parseInt(amount, 10);
 
-      quantities[index] += amount;
+      quantities[idx] = (quantities[idx] || 0) + amt;
 
-      if (quantities[index] < 0) {
-        quantities[index] = 0;
+      if (quantities[idx] < 0) {
+        quantities[idx] = 0;
       }
 
-      document.getElementById("qty-" + index).textContent =
-        quantities[index];
+      const qtyElement = document.getElementById("qty-" + idx);
+      if (qtyElement) {
+        qtyElement.textContent = quantities[idx];
+      }
 
       updateSummary();
     }
 
     function updateSummary() {
 
-      const summaryItems =
-        document.getElementById("summaryItems");
+      const summaryItems = document.getElementById("summaryItems");
+      const deliveryFeeElement = document.getElementById("deliveryFee");
+      const totalElement = document.getElementById("total");
 
-      const deliveryFeeElement =
-        document.getElementById("deliveryFee");
-
-      const totalElement =
-        document.getElementById("total");
+      if (!summaryItems || !deliveryFeeElement || !totalElement) return;
 
       summaryItems.innerHTML = "";
 
@@ -999,95 +992,66 @@
       let totalCookiesCount = 0;
 
       cookies.forEach((cookie, index) => {
-
-        const qty = quantities[index];
+        const qty = quantities[index] || 0;
 
         if (qty > 0) {
-
           totalCookiesCount += qty;
           const itemTotal = qty * price;
-
           subtotal += itemTotal;
 
-          const row =
-            document.createElement("div");
-
+          const row = document.createElement("div");
           row.className = "summary-row";
-
           row.innerHTML = `
             <span>${cookie} × ${qty}</span>
             <span>₱${itemTotal}</span>
           `;
-
           summaryItems.appendChild(row);
         }
-
       });
 
-      const deliveryMethod =
-        document.querySelector(
-          'input[name="method"]:checked'
-        ).value;
+      const selectedMethodElem = document.querySelector('input[name="method"]:checked');
+      const deliveryMethod = selectedMethodElem ? selectedMethodElem.value : "Pickup";
 
-      // Dynamic delivery fee calculation: ₱40 if 5 or fewer, ₱50 if 6 or more
       let deliveryFee = 0;
-      if (deliveryMethod === "Delivery") {
+      if (deliveryMethod === "Delivery" && totalCookiesCount > 0) {
         deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
       }
 
-      const total =
-        subtotal + deliveryFee;
+      const total = subtotal + deliveryFee;
 
-      deliveryFeeElement.textContent =
-        `₱${deliveryFee}`;
-
-      totalElement.textContent =
-        `₱${total}`;
+      deliveryFeeElement.textContent = `₱${deliveryFee}`;
+      totalElement.textContent = `₱${total}`;
     }
 
     function toggleAddress() {
+      const deliveryRadio = document.getElementById("delivery");
+      const delivery = deliveryRadio ? deliveryRadio.checked : false;
 
-      const delivery =
-        document.getElementById("delivery").checked;
-
-      const addressBox =
-        document.getElementById("addressBox");
-
-      addressBox.classList.toggle(
-        "hidden",
-        !delivery
-      );
+      const addressBox = document.getElementById("addressBox");
+      if (addressBox) {
+        addressBox.classList.toggle("hidden", !delivery);
+      }
 
       updateSummary();
     }
 
     function togglePayment() {
+      const cashRadio = document.getElementById("cash");
+      const cash = cashRadio ? cashRadio.checked : false;
 
-      const cash =
-        document.getElementById("cash").checked;
-
-      const paymentBox =
-        document.getElementById("paymentBox");
-
-      paymentBox.classList.toggle(
-        "hidden",
-        cash
-      );
+      const paymentBox = document.getElementById("paymentBox");
+      if (paymentBox) {
+        paymentBox.classList.toggle("hidden", cash);
+      }
     }
 
     async function placeOrder(event) {
-
       event.preventDefault();
 
-      const hasOrder =
-        quantities.some(qty => qty > 0);
+      const hasOrder = quantities.some(qty => qty > 0);
 
       if (!hasOrder) {
-
-        alert(
-          "Please choose at least one cookie before placing your order. 🍪"
-        );
-
+        alert("Please choose at least one cookie before placing your order. 🍪");
         return;
       }
 
@@ -1100,7 +1064,7 @@
       let totalCookiesCount = 0;
 
       cookies.forEach((cookie, index) => {
-        const qty = quantities[index];
+        const qty = quantities[index] || 0;
         if (qty > 0) {
           totalCookiesCount += qty;
           orderedItemsList.push(`${cookie} x${qty}`);
@@ -1114,9 +1078,8 @@
       const method = methodElem ? methodElem.value : "Pickup";
       const payment = paymentElem ? paymentElem.value : "GCash";
 
-      // Dynamic delivery fee logic for script payload
       let deliveryFee = 0;
-      if (method === "Delivery") {
+      if (method === "Delivery" && totalCookiesCount > 0) {
         deliveryFee = totalCookiesCount <= 5 ? 40 : 50;
       }
 
@@ -1149,12 +1112,10 @@
           body: JSON.stringify(orderData)
         });
 
-        // Hide form and display success card
         document.getElementById("orderForm").classList.add("hidden");
         document.getElementById("successTotal").textContent = `₱${total}`;
         document.getElementById("successCard").classList.remove("hidden");
 
-        // Scroll smoothly to success card
         document.getElementById("successCard").scrollIntoView({ behavior: 'smooth' });
 
       } catch (error) {
@@ -1164,14 +1125,14 @@
         submitBtn.disabled = false;
         submitBtn.textContent = "PLACE MY ORDER";
       }
-
     }
 
     function resetOrderForm() {
       document.querySelector("form").reset();
       quantities = [0, 0, 0, 0, 0, 0];
       cookies.forEach((_, i) => {
-        document.getElementById(`qty-${i}`).textContent = "0";
+        const qtySpan = document.getElementById(`qty-${i}`);
+        if (qtySpan) qtySpan.textContent = "0";
       });
       toggleAddress();
       togglePayment();
@@ -1183,9 +1144,10 @@
       document.getElementById("orderForm").scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Initialize calendar min date and summary on page load
-    setMinDate();
-    updateSummary();
+    document.addEventListener("DOMContentLoaded", function() {
+      setMinDate();
+      updateSummary();
+    });
 
   </script>
 
