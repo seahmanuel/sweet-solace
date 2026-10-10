@@ -265,7 +265,7 @@
               <input type="radio" name="locationGroup" id="locCalapan" value="Calapan City" checked onchange="onLocationChange()">
               <label for="locCalapan">Calapan City (Local)</label>
             </div>
-            <div class="radio-option" id="luzonWrapper">
+            <div class="radio-option">
               <input type="radio" name="locationGroup" id="locLuzon" value="Luzon-Wide" onchange="onLocationChange()">
               <label for="locLuzon">Luzon-Wide (J&T Courier)</label>
             </div>
@@ -423,10 +423,7 @@
   </footer>
 
   <script>
-    // Google Apps Script Web App URL:
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSZdmf8BvO6h0fcmaDiGV4ZiQbNJBeETfvDfpGdJAP6u0cZUlNJCMzGQmtAarUXFQV/exec";
-    
-    // Google Sheet Remote Toggle CSV URL:
     const SETTINGS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTp-D4XeVA-AmzxcXEeCEoV0XBl2moXhV02E4dez_DYSKFA47iwDqf0WGqU8QDs_OWuLvV6-fq49j10/pub?gid=893550955&single=true&output=csv";
 
     const cookies = [
@@ -440,40 +437,20 @@
 
     const price = 45;
     let quantities = [0, 0, 0, 0, 0, 0];
+    let isLuzonShippingActive = true; 
 
-    // Check Google Sheet status on load with CORS proxy support
     async function checkLuzonShippingStatus() {
       try {
-        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(SETTINGS_CSV_URL);
-        const response = await fetch(proxyUrl);
+        const response = await fetch(SETTINGS_CSV_URL + "&t=" + new Date().getTime());
         const text = await response.text();
-        const isLuzonOn = text.toUpperCase().includes('ON');
         
-        const luzonWrapper = document.getElementById("luzonWrapper");
-        const locLuzon = document.getElementById("locLuzon");
-
-        if (!isLuzonOn) {
-          if (locLuzon && locLuzon.checked) {
-            document.getElementById("locCalapan").checked = true;
-            onLocationChange();
-          }
-          
-          if (luzonWrapper) {
-            luzonWrapper.addEventListener("click", function(e) {
-              e.preventDefault();
-              e.stopPropagation();
-              document.getElementById("locCalapan").checked = true;
-              onLocationChange();
-              alert("Sorry, this option is not available right now. We'll get back to delivering to your area soon! 🤎");
-            }, true);
-            
-            luzonWrapper.style.opacity = "0.4";
-            luzonWrapper.style.cursor = "not-allowed";
-            if (locLuzon) locLuzon.disabled = true;
-          }
+        if (text.toUpperCase().includes('OFF')) {
+          isLuzonShippingActive = false;
+        } else {
+          isLuzonShippingActive = true;
         }
       } catch (err) {
-        console.error("Error checking status:", err);
+        console.error("Error fetching status:", err);
       }
     }
 
@@ -488,8 +465,17 @@
     }
 
     function onLocationChange() {
-      const isLuzon = document.getElementById("locLuzon").checked;
+      const locLuzon = document.getElementById("locLuzon");
+      const locCalapan = document.getElementById("locCalapan");
 
+      if (locLuzon.checked && !isLuzonShippingActive) {
+        locCalapan.checked = true;
+        alert("Sorry, this option is not available right now. We'll get back to delivering to your area soon! 🤎");
+        onLocationChange();
+        return;
+      }
+
+      const isLuzon = locLuzon.checked;
       const methodField = document.getElementById("methodField");
       const cashOption = document.getElementById("cashOption");
       const timeField = document.getElementById("timeField");
@@ -746,8 +732,8 @@
       document.getElementById("orderForm").scrollIntoView({ behavior: 'smooth' });
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
-      checkLuzonShippingStatus();
+    document.addEventListener("DOMContentLoaded", async function() {
+      await checkLuzonShippingStatus();
       onLocationChange();
       togglePayment();
     });
