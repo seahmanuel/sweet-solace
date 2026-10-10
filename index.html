@@ -265,7 +265,7 @@
               <input type="radio" name="locationGroup" id="locCalapan" value="Calapan City" checked onchange="onLocationChange()">
               <label for="locCalapan">Calapan City (Local)</label>
             </div>
-            <div class="radio-option">
+            <div class="radio-option" id="luzonWrapper">
               <input type="radio" name="locationGroup" id="locLuzon" value="Luzon-Wide" onchange="onLocationChange()">
               <label for="locLuzon">Luzon-Wide (J&T Courier)</label>
             </div>
@@ -425,6 +425,9 @@
   <script>
     // Google Apps Script Web App URL:
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSZdmf8BvO6h0fcmaDiGV4ZiQbNJBeETfvDfpGdJAP6u0cZUlNJCMzGQmtAarUXFQV/exec";
+    
+    // Google Sheet Remote Toggle CSV URL:
+    const SETTINGS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTp-D4XeVA-AmzxcXEeCEoV0XBl2moXhV02E4dez_DYSKFA47iwDqf0WGqU8QDs_OWuLvV6-fq49j10/pub?gid=893550955&single=true&output=csv";
 
     const cookies = [
       "Cheesy Cream Drop",
@@ -437,6 +440,39 @@
 
     const price = 45;
     let quantities = [0, 0, 0, 0, 0, 0];
+
+    // Check Google Sheet status on load
+    async function checkLuzonShippingStatus() {
+      try {
+        const response = await fetch(SETTINGS_CSV_URL);
+        const text = await response.text();
+        const isLuzonOn = text.toUpperCase().includes('ON');
+        
+        const luzonWrapper = document.getElementById("luzonWrapper");
+        const locLuzon = document.getElementById("locLuzon");
+
+        if (!isLuzonOn) {
+          // Kapag naka-OFF ang Luzon delivery sa Google Sheet:
+          if (locLuzon.checked) {
+            document.getElementById("locCalapan").checked = true;
+            onLocationChange();
+          }
+          
+          // Harangin o i-hide ang Luzon option
+          if (luzonWrapper) {
+            luzonWrapper.onclick = function(e) {
+              e.preventDefault();
+              alert("Sorry, this option is not available right now. We'll get back to delivering to your area soon! 🤎");
+            };
+            luzonWrapper.style.opacity = "0.4";
+            luzonWrapper.style.cursor = "not-allowed";
+            locLuzon.disabled = true;
+          }
+        }
+      } catch (err) {
+        console.error("Error checking status:", err);
+      }
+    }
 
     function toggleFaq(button) {
       button.classList.toggle("active");
@@ -708,6 +744,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", function() {
+      checkLuzonShippingStatus();
       onLocationChange();
       togglePayment();
     });
