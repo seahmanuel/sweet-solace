@@ -441,10 +441,11 @@
     const price = 45;
     let quantities = [0, 0, 0, 0, 0, 0];
 
-    // Check Google Sheet status on load
+    // Check Google Sheet status on load with CORS proxy support
     async function checkLuzonShippingStatus() {
       try {
-        const response = await fetch(SETTINGS_CSV_URL);
+        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(SETTINGS_CSV_URL);
+        const response = await fetch(proxyUrl);
         const text = await response.text();
         const isLuzonOn = text.toUpperCase().includes('ON');
         
@@ -452,21 +453,23 @@
         const locLuzon = document.getElementById("locLuzon");
 
         if (!isLuzonOn) {
-          // Kapag naka-OFF ang Luzon delivery sa Google Sheet:
-          if (locLuzon.checked) {
+          if (locLuzon && locLuzon.checked) {
             document.getElementById("locCalapan").checked = true;
             onLocationChange();
           }
           
-          // Harangin o i-hide ang Luzon option
           if (luzonWrapper) {
-            luzonWrapper.onclick = function(e) {
+            luzonWrapper.addEventListener("click", function(e) {
               e.preventDefault();
+              e.stopPropagation();
+              document.getElementById("locCalapan").checked = true;
+              onLocationChange();
               alert("Sorry, this option is not available right now. We'll get back to delivering to your area soon! 🤎");
-            };
+            }, true);
+            
             luzonWrapper.style.opacity = "0.4";
             luzonWrapper.style.cursor = "not-allowed";
-            locLuzon.disabled = true;
+            if (locLuzon) locLuzon.disabled = true;
           }
         }
       } catch (err) {
