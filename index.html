@@ -639,9 +639,9 @@
         shippingLabel.textContent = "J&T Shipping Fee";
         if (totalCookiesCount > 0) {
           if (totalCookiesCount <= 10) {
-            deliveryFee = 80;
+            deliveryFee = 75;
           } else {
-            deliveryFee = 90;
+            deliveryFee = 80;
           }
         }
       } else {
@@ -719,8 +719,8 @@
 
       if (isLuzon) {
         method = "J&T Shipping (Luzon)";
-        if (totalCookiesCount <= 10) deliveryFee = 80;
-        else deliveryFee = 90;
+        if (totalCookiesCount <= 10) deliveryFee = 75;
+        else deliveryFee = 80;
       } else {
         const isDelivery = document.getElementById("delivery").checked;
         if (isDelivery) {
