@@ -464,10 +464,17 @@
         const response = await fetch(SETTINGS_CSV_URL + "&t=" + new Date().getTime());
         const text = await response.text();
         
-        const parsedSlots = parseInt(text.trim(), 10);
+        // Babasahin ang ikalawang column (Cell B1) sa CSV output
+        let rawVal = text.trim();
+        if (rawVal.includes(',')) {
+          const parts = rawVal.split(',');
+          rawVal = parts[1] ? parts[1].trim() : parts[0].trim();
+        }
+
+        const parsedSlots = parseInt(rawVal, 10);
         if (!isNaN(parsedSlots)) {
           availableSlots = parsedSlots;
-        } else if (text.toUpperCase().includes('OFF')) {
+        } else if (rawVal.toUpperCase().includes('OFF')) {
           availableSlots = 0;
         } else {
           availableSlots = 999;
